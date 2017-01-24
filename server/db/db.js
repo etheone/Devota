@@ -1,4 +1,3 @@
-
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize('mysql://Emil:kAi98v9l@localhost:3306/joemini');
 
