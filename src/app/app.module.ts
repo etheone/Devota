@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http, RequestOptions } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -10,36 +11,14 @@ import { DevicesComponent } from './devices/devices.component';
 import { DataComponent } from './data/data.component';
 import { GroupsComponent } from './groups/groups.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginComponent } from './login/login.component';
 
-const ROUTES = [
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full'
+import { AuthGuard } from './common/auth.guard';
+import { routes } from './app.routes';
 
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent
-  },
-  {
-    path: 'devices',
-    component: DevicesComponent
-  },
-  {
-    path: 'data',
-    component: DataComponent
-  },
-  {
-    path: 'groups',
-    component: GroupsComponent
-  },
-  {
-    path: '**',
-    component: PageNotFoundComponent
-  }
-
-]
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp( new AuthConfig({}), http, options);
+}
 
 @NgModule({
   declarations: [
@@ -48,15 +27,23 @@ const ROUTES = [
     DevicesComponent,
     DataComponent,
     GroupsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [ Http, RequestOptions ]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 <!-- //////////////////////////////////////////////////////////////////////////// --> 
 <!-- START SIDEBAR -->
-<div class="sidebar clearfix">
+<div class="sidebar clearfix" *ngIf="auth.authenticated()">
 
 <ul class="sidebar-panel nav">
   <li class="sidetitle">MENU</li>
@@ -20,13 +20,12 @@
 <div class="content">
 
 
-
  <!-- //////////////////////////////////////////////////////////////////////////// --> 
 <!-- START CONTAINER -->
 <!--<div class="container-widget">-->
 
   <!-- Start Top Angular -->
-  
+ 
     <router-outlet></router-outlet>
   
   <!-- End Angular -->

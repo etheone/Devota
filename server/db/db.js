@@ -16,7 +16,7 @@ var User = sequelize.define('user', {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.fn('NOW'),
-        field: 'postDate'
+        field: 'added_date'
     },
     password_hash: Sequelize.STRING,
     password: {
