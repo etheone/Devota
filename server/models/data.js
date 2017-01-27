@@ -1,70 +1,43 @@
-var Sequelize = require('sequelize');
-var sequelize = new Sequelize('mysql://Emil:kAi98v9l@localhost:3306/joemini');
-var fs = require('fs'); 
-var path = require('path'); 
-var db = {};
+'use strict';
 
-fs.readdirSync(__dirname)
-    .filter(function (file) {
-        return (file.indexOf('.') !== 0) && (file !== 'index.js')
-    })
-    .forEach(function (file) {
-        var model = sequelize.import(path.join(__dirname, file))
-        db[model.name] = model
-    })
+module.exports = function (sequelize, DataTypes) {
+    var Data = sequelize.define('Data', {
+        id: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV1,
+            primaryKey: true
+        },
+        data: {
+            type: DataTypes.STRING,
+            allowNull: false
 
-Object.keys(db).forEach(function (modelName) {
-    if (db[modelName].options.hasOwnProperty('associate')) {
-        db[modelName].options.associate(db)
-    }
-});
-
-exports.sequelize = sequelize;
-
-/*var User = sequelize.define('user', {
-    id: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        primaryKey: true
+        },
+        time: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: sequelize.NOW,
+            field: 'time'
+        },
     },
-    freezeTableName: true // Model tableName will be the same as the model name
-});*/
+        {
+            classMethods: {
+                associate: function (models) {
+                    Data.belongsTo(models.Device, {
+                        onDelete: 'CASCADE',
+                        foreignKey: {
+                            allowNull: false
+                        }
+                    });
+                }
 
-/*var Device = sequelize.define('device', {
-    id: {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV1,
-        primaryKey: true
-    },
-    device_name: {
-        type: Sequelize.TEXT,
-        field: 'deviceName',
-        allowNull: false,
-    },
-    type: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    added: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.fn('NOW'),
-        field: 'added'
-    },
-    user_id: {
-        type: Sequelize.UUID,
-        allowNull: true,
-        references: {
-            model: User,
-            key: 'id'
-        }
+            }
+        });
 
-    },
+    return Data;
+};
 
-    freezeTableName: true // Model tableName will be the same as the model name
-});*/
-
-/*var Data = sequelize.define('data', {
+/*
+var Data = sequelize.define('data', {
     id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV1,
@@ -93,52 +66,6 @@ exports.sequelize = sequelize;
     freezeTableName: true // Model tableName will be the same as the model name
 });*/
 
-
-/*
-function createPost(postText, imgName) {
-    Post.sync({}).then(function () {
-        // Table created
-        return Post.create({
-            postText: postText,
-            img: ('img/' + imgName)
-        }).catch(function(error) {
-            console.log("Error saving post... postText: " + postText);
-        });
-    });
-
-};
-
-
-
-exports.Post = Post;
-exports.sequelize = sequelize;
-exports.createPost = createPost;*/
-
-
-/*function addUser(userId) {
-    User.sync({}).then(function () {
-        //Table created or synched
-        return User.create({
-            id: userId
-        }).catch(function (error) {
-            console.log("Error creating user, userId: " + userId);
-        });
-    });
-};*/
-
-/*function addDevice(deviceId, name, type, userId, added, uniqueId) {
-    Device.sync({}).then(function () {
-        return Device.create({
-            id: deviceId,
-            device_identifier: uniqueId,
-            device_name: name,
-            type: type,
-            added: added,
-            user_id: userId
-        });
-    });
-};*/
-
 /*function addData(dataId, deviceId, data, time) {
     Device.sync({}).then(function () {
         return Device.create({
@@ -157,8 +84,8 @@ exports.createPost = createPost;*/
     *   args = { timeStart, timeEnd}
     *   
     */
-
-  /*  switch (args.length()) {
+/*
+    switch (args.length()) {
         case 1:
             //deviceId
             Data.findAll({
@@ -191,9 +118,9 @@ exports.createPost = createPost;*/
             });
             break;
     }
-};*/
-
-/*function removeData(args) {*/
+}; */
+/*
+function removeData(args) {
     /*                   combinations
     *   args = { deviceId = x, timeStart = a, timeEnd = b}
     *   args = { deviceId }
@@ -202,7 +129,7 @@ exports.createPost = createPost;*/
     *   
     */
 
-/*    switch (args.length()) {
+   /* switch (args.length()) {
         case 1:
             //deviceId
             if (args[0] == 'dataId') {
@@ -225,6 +152,7 @@ exports.createPost = createPost;*/
                 });
             }
             break;
+
         case 2:
             //timeStart and timeEnd
             Data.destroy({
@@ -235,6 +163,7 @@ exports.createPost = createPost;*/
                 console.err("An error occured while deleting Data by data_id");
             });
             break;
+
         case 3:
             //deviceId, timeStart and timeEnd
             Data.destroy({
@@ -247,6 +176,3 @@ exports.createPost = createPost;*/
             break;
     }
 };*/
-
-
-
