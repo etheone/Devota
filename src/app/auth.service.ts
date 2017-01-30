@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { tokenNotExpired } from 'angular2-jwt';
+import { Response, Request } from '@angular/http';
+import { tokenNotExpired, AuthHttp } from 'angular2-jwt';
+import 'rxjs/add/operator/toPromise';
 
 // Avoid name not found warnings
 declare var Auth0Lock: any;
@@ -20,8 +22,8 @@ export class AuthService {
 
   private lock = new Auth0Lock('VHnXH58XGAL7XOfqUs8cjY8cMMt5gv2L', 'enilsson.eu.auth0.com', this.options);
   private profile: Object;
-  
-  constructor(private router: Router) {
+
+  constructor(private router: Router, public authHttp: AuthHttp) {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
       localStorage.setItem('id_token', authResult.idToken);
@@ -32,7 +34,9 @@ export class AuthService {
 
         localStorage.setItem('profile', JSON.stringify(profile));
         this.profile = profile;
+
       });
+      this.loginToBackend();
     });
   }
 
@@ -57,4 +61,55 @@ export class AuthService {
     // Send the user back to the startpage after logout
 
   }
+
+  private loginToBackend(): Promise<any> {
+
+    var that = this;
+    return this.authHttp.get("http://localhost:3000/api/authenticate")
+
+
+      .toPromise()
+      .then(function (res: Response) {
+        if (res.status == 200) {
+          console.log(res.text());
+          that.router.navigate(['./dashboard']);
+        } else {
+          console.log("DID NOT GET A 200 RESPONSE FROM BACKEND DURING AUTHENTICATE");
+        }
+      })
+      .catch(this.handleError);
+  }
+
+
+  private goToDashboard(res: Response) {
+    if (res.status == 200) {
+
+      //this.router.navigate(['./dashboard']);
+    } else {
+      console.log("DID NOT GET A 200 RESPONSE FROM BACKEND DURING AUTHENTICATE");
+    }
+  }
+
+  /*  private extractData(res: Response) {
+    let reset = res.json();
+    
+    
+    
+    return reset;
+
+  }*/
+  private handleError(error: Response | any) {
+
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    return Promise.reject(errMsg);
+  }
+
 }

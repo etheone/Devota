@@ -9,7 +9,13 @@ var config    = require(path.join(__dirname, '..', 'config', 'config.json'))[env
   var sequelize = new Sequelize(process.env.DATABASE_URL,config);
 } else {*/
 //var sequelize = new Sequelize(config.database, config.username, config.password, config);
-var sequelize = new Sequelize('mysql://joemini:Kroywen1@e-nilsson.se:9191/joemini');
+//var sequelize = new Sequelize('mysql://joemini:Kroywen1@e-nilsson.se:9191/joemini');
+
+var sequelize = new Sequelize(config.database, config.username, config.password, {
+  host: config.host,
+  port: config.port,
+  logging: false
+});
 //}
 var db        = {};
 

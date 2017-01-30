@@ -33,12 +33,33 @@ module.exports = function (sequelize, DataTypes) {
                         });
 
                     });
+                },
+                find: function (userId) {
+                    User.findOne({
+                        where: { id: userId }
+                    }).then(function (user) {
+                        return user;
+                    }).catch(function (error) {
+                        console.err("An error occured while finding user");
+                    });
+                },
+                delete: function (userId) {
+                    User.destroy({
+                        where: { id: userId }
+                    }).then(function(user) {
+                        return user;
+                    }).catch(function(error) {
+                        console.err("An error occured while deleting user");
+                    });
                 }
+
             }
 
         });
     return User;
 };
+
+
 
 /*var User = sequelize.define('user', {
     id: {

@@ -14,44 +14,98 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
         },
     },
-    {
-        classMethods: {
-            associate: function (models) {
-                Device.belongsTo(models.User, {
-                    onDelete: 'CASCADE',
-                    foreignKey: {
-                        allowNull: false
-                    }
-
-                });
-                Device.hasMany(models.Data)
-            },
-            add: function (deviceId, name, type, userId, uniqueId) {
-                Device.sync({}).then(function () {
-                    Data.findOne({
-                        where: { device_id: deviceId }
-                    }).then(function (data) {
-                        if (data == null) {
-                            return Device.create({
-                                id: deviceId,
-                                device_identifier: uniqueId,
-                                device_name: name,
-                                type: type,
-                                user_id: userId
-                            });
-                        } else {
-                            return "Device with ID " + deviceId + " already exists!"
+        {
+            classMethods: {
+                associate: function (models) {
+                    Device.belongsTo(models.User, {
+                        onDelete: 'CASCADE',
+                        foreignKey: {
+                            allowNull: false
                         }
-                    }).catch(function (error) {
-                        console.err("An error occured while finding data by deviceId, timeStart and timeEnd");
+
                     });
-                });
+                    Device.hasMany(models.Data)
+                },
+                add: function (deviceId, name, type, userId, uniqueId) {
+                    Device.sync({}).then(function () {
+                        Data.findOne({
+                            where: { device_id: deviceId }
+                        }).then(function (data) {
+                            if (data == null) {
+                                return Device.create({
+                                    id: deviceId,
+                                    device_identifier: uniqueId,
+                                    device_name: name,
+                                    type: type,
+                                    user_id: userId
+                                });
+                            } else {
+                                return "Device with ID " + deviceId + " already exists!"
+                            }
+                        }).catch(function (error) {
+                            console.err("An error occured while finding device by deviceId, timeStart and timeEnd");
+                        });
+                    }).catch(function(error) {
+                        console.err("An error occured while syncing in function add (Device) with table: Device");
+                    })
+                },
+                find: function (deviceId, userId) {
+                    if (deviceId != null) {
+                        Device.findOne({
+                            where: { device_id: deviceId }
+                        }).then(function (device) {
+                            return device;
+                        }).catch(function (error) {
+                            console.err("An error occured while finding device by deviceId");
+                        });
+                    } else {
+                        Device.findAll({
+                            where: { UserId: userId }
+                        }).then(function (devices) {
+                            return devices;
+                        }).catch(function (error) {
+                            console.err("An error occured while finding device by deviceId");
+                        });
+                    }
+                },
+                remove: function (deviceId, userId) {
+                    if (deviceId != null) {
+                        //Delete device with deviceId
+                        Device.destroy({
+                            where: { device_id: deviceId }
+                        }).then(function (device) {
+                            return device;
+                        }).catch(function (error) {
+                            console.err("An error occured while removing device by deviceId");
+                        });
+                    } else {
+                        //Delete all devices belonging to userId
+                        Device.destroy({
+                            where: { UserId: userId }
+                        }).then(function (device) {
+                            return device;
+                        }).catch(function (error) {
+                            console.err("An error occured while removing device by deviceId");
+                        });
+                    }
+                },
+                edit: function(deviceId, deviceName) {
+                    Device.update({
+                        device_name: deviceName
+                       },
+                       {
+                        where: { id: deviceId }
+                    }).then(function(device) {
+                        return device;
+                    }).catch(function(error) {
+                        console.err("An error occured while updating device name by deviceId");
+                    });
+                }
+
             },
 
-        },
-
-        freezeTableName: true // Model tableName will be the same as the model name
-    });
+            freezeTableName: true // Model tableName will be the same as the model name
+        });
 
     return Device;
 };

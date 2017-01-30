@@ -1,11 +1,12 @@
 {
     "development": {
-        "username": "root",
-        "password": "abf31e43E",
-        "database": "joeminidev",
-        "host": "e-nilsson.se:9090",
-        "port": 9090,
-        "dialect": "mysql"
+        "username": "joemini",
+        "password": "Kroywen1",
+        "database": "joemini",
+        "host": "e-nilsson.se",
+        "port": 9191,
+        "dialect": "mysql",
+        "logging": false
     },
     "production": {
         "username": "root",
@@ -13,6 +14,7 @@
         "database": "joeminiprod",
         "host": "e-nilsson.se:9090",
         "port": 9090,
-        "dialect": "mysql"
+        "dialect": "mysql",
+        "logging": false
     }
 }
