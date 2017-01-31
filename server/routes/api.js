@@ -39,6 +39,15 @@ router.get('/authenticate', (req, res) => {
 });
 
 
+router.get('/addDevice', (req, res) => {
+    if(req.headers && req.headers.authorization) {
+        
+    } else {    
+        res.sendStatus(401).send('Unauthorized');
+    }
+});
+
+
 
 function randomString(length) {
     var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');

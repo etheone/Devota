@@ -1,7 +1,8 @@
 module.exports = function (sequelize, DataTypes) {
     var Device = sequelize.define('Device', {
         id: {
-            type: DataTypes.STRING,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         device_name: {
