@@ -57,6 +57,8 @@ export class AuthService {
     // To log out, just remove the token and profile
     // from local storage
     localStorage.removeItem('id_token');
+    localStorage.removeItem('profile');
+    this.router.navigate(['/login']);
 
     // Send the user back to the startpage after logout
 

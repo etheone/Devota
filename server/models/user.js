@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
                     User.hasMany(models.Device)
                 },
                 add: function (userId) {
-                    return User.sync({}).then(function () {
+                    /*return User.sync({}).then(function () {
                         //Table created or synched
                        return User.findOne({
                             where: { id: userId }
@@ -32,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
                                     console.err("Error creating user, userId: " + userId);
                                 });
                             } else {
-                                userToReturn["user"] = -1;
+                                userToReturn["user"] = user;
                                 userToReturn["created"] = false;
                                 userToReturn["message"] = "User with ID " + userId + " already exists!"
                                 return userToReturn;
@@ -41,15 +41,13 @@ module.exports = function (sequelize, DataTypes) {
                             console.err("An error occured while creating User");
                         });
 
-                    });
+                    });*/
                 },
                 findOrAdd: function(userId) {
                     return User.findOrCreate({
                         where: { id: userId },
                         defaults: { id: userId }
                     }).spread(function(user, created) {
-                        console.log("In user findorAdd");
-                   
                         return [user, created];
                     }).catch(function(error) {
                         console.err("An error occured while findOrAdding user by userId");

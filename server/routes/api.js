@@ -16,29 +16,17 @@ router.get('/hej', (req, res) => {
 });
 
 router.get('/authenticate', (req, res) => {
-    //console.log(req.headers.authorization);
-    console.log("CALLED NOW");
     var decoded;
     if (req.headers && req.headers.authorization) {
         var authorization = req.headers.authorization.replace("Bearer ", "");
         try {
-            console.log("*****************AUTHORIZATION********");
-            console.log(authorization);
             decoded = jwt.verify(authorization, secret);
         } catch (e) {
             console.log(e);
             return res.status(401).send('unauthorized');
         }
         var userId = decoded.sub;
-
-        models.User.add(userId).then(user => {
-            console.log("**************HELlLOEOOEO***************");
-            console.log("***USER?***")
-            console.log(user.user);
-            console.log("***CREATED?***")
-            console.log(user.created);
-            console.log("***MESSAGE?***");
-            console.log(user.message);
+        models.User.findOrAdd(userId).then(user => {
             res.sendStatus(200);
         });
 
