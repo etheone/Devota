@@ -7,7 +7,7 @@
 
   <!-- Start Page Header Right Div -->
   <div class="right">
-      <button class="btn btn-primary btn-margin">New Device</button>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#addDevice"><i class="fa fa-plus-circle"></i>New Device</button>
     <div class="btn-group" role="group" aria-label="...">
       <a href="index.html" class="btn btn-light">Devices</a>
       <a href="#" class="btn btn-light"><i class="fa fa-refresh"></i></a>
@@ -25,5 +25,34 @@
     <h1>
       {{title}}
     </h1>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addDevice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add new device</h4>
+      </div>
+      <form>
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="input1" class="form-label">Name</label>
+              <input type="text" class="form-control" id="input1">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Description</label>
+              <textarea class="form-control" rows="3" id="textarea1"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

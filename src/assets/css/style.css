@@ -3784,7 +3784,7 @@ div[data-role="editor-toolbar"] {
 }
 
 .modal-content {
-  box-shadow: 2px 2px 2px red
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
 }
 
 .modalicon {
