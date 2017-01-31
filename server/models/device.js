@@ -27,8 +27,8 @@ module.exports = function (sequelize, DataTypes) {
                     Device.hasMany(models.Data)
                 },
                 add: function (deviceId, name, type, userId, uniqueId) {
-                    Device.sync({}).then(function () {
-                        Data.findOne({
+                    return Device.sync({}).then(function () {
+                        return Data.findOne({
                             where: { device_id: deviceId }
                         }).then(function (data) {
                             if (data == null) {
@@ -51,7 +51,7 @@ module.exports = function (sequelize, DataTypes) {
                 },
                 find: function (deviceId, userId) {
                     if (deviceId != null) {
-                        Device.findOne({
+                        return Device.findOne({
                             where: { device_id: deviceId }
                         }).then(function (device) {
                             return device;
@@ -59,7 +59,7 @@ module.exports = function (sequelize, DataTypes) {
                             console.err("An error occured while finding device by deviceId");
                         });
                     } else {
-                        Device.findAll({
+                        return Device.findAll({
                             where: { UserId: userId }
                         }).then(function (devices) {
                             return devices;
@@ -71,7 +71,7 @@ module.exports = function (sequelize, DataTypes) {
                 remove: function (deviceId, userId) {
                     if (deviceId != null) {
                         //Delete device with deviceId
-                        Device.destroy({
+                       return Device.destroy({
                             where: { device_id: deviceId }
                         }).then(function (device) {
                             return device;
@@ -80,7 +80,7 @@ module.exports = function (sequelize, DataTypes) {
                         });
                     } else {
                         //Delete all devices belonging to userId
-                        Device.destroy({
+                        return Device.destroy({
                             where: { UserId: userId }
                         }).then(function (device) {
                             return device;
@@ -90,7 +90,7 @@ module.exports = function (sequelize, DataTypes) {
                     }
                 },
                 edit: function(deviceId, deviceName) {
-                    Device.update({
+                    return Device.update({
                         device_name: deviceName
                        },
                        {

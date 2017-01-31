@@ -30,7 +30,7 @@ module.exports = function (sequelize, DataTypes) {
                     });
                 },
                 add: function (dataId, data, time) {
-                    Data.sync({}).then(function () {
+                    return Data.sync({}).then(function () {
                         return Data.create({
                             id: dataId,
                             data: data,
@@ -50,7 +50,7 @@ module.exports = function (sequelize, DataTypes) {
                             //deviceId
                             if (args[0] == 'dataId') {
                                 //Remove a single data entry
-                                Data.destroy({
+                                return Data.destroy({
                                     where: { data_id: args[0] }
                                 }).then(function (deleted) {
                                     return (deleted != null);
@@ -59,7 +59,7 @@ module.exports = function (sequelize, DataTypes) {
                                 });
                             } else if (args[0] == 'deviceId') {
                                 //Remove all data for a device
-                                Data.destroy({
+                                return Data.destroy({
                                     where: { device_id: args[0] }
                                 }).then(function (deleted) {
                                     return (deleted != null);
@@ -71,7 +71,7 @@ module.exports = function (sequelize, DataTypes) {
 
                         case 2:
                             //timeStart and timeEnd
-                            Data.destroy({
+                            return Data.destroy({
                                 where: { $between: [timeStart, timeEnd] }
                             }).then(function (deleted) {
                                 return (deleted != null);
@@ -82,7 +82,7 @@ module.exports = function (sequelize, DataTypes) {
 
                         case 3:
                             //deviceId, timeStart and timeEnd
-                            Data.destroy({
+                            return Data.destroy({
                                 where: { time: { $between: [timeStart, timeEnd], $and: [{ device_id: args[0] }] } }
                             }).then(function (deleted) {
                                 return (deleted != null);
@@ -103,7 +103,7 @@ module.exports = function (sequelize, DataTypes) {
                     switch (args.length()) {
                         case 1:
                             //deviceId
-                            Data.findAll({
+                            return Data.findAll({
                                 where: { device_id: args[0] }
                             }).then(function (data) {
                                 return data
@@ -114,7 +114,7 @@ module.exports = function (sequelize, DataTypes) {
                             break;
                         case 2:
                             //timeStart and timeEnd
-                            Data.findAll({
+                            return Data.findAll({
                                 where: { time: { $between: [args[0], args[1]] } }
                             }).then(function (data) {
                                 return data
@@ -124,7 +124,7 @@ module.exports = function (sequelize, DataTypes) {
                             break;
                         case 3:
                             //deviceId, timeStart and timeEnd
-                            Data.findAll({
+                            return Data.findAll({
                                 where: { time: { $between: [timeStart, timeEnd], $and: [{ device_id: args[0] }] } }
                             }).then(function (data) {
                                 return data

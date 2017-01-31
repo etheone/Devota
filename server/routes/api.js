@@ -17,6 +17,7 @@ router.get('/hej', (req, res) => {
 
 router.get('/authenticate', (req, res) => {
     //console.log(req.headers.authorization);
+    console.log("CALLED NOW");
     var decoded;
     if (req.headers && req.headers.authorization) {
         var authorization = req.headers.authorization.replace("Bearer ", "");
@@ -29,29 +30,18 @@ router.get('/authenticate', (req, res) => {
             return res.status(401).send('unauthorized');
         }
         var userId = decoded.sub;
-       
-        Promise.join(
-            models.User.find(userId), function(find) {
-                if(find != null) {
-                    console.log("****************** HELLLLLOOO **************");
-                    console.log(find);
-                    res.status(200).send(find.id);
-                }
-        }).catch(function(e) {
-            console.err("THERE WAS ERROR");
-            console.err(e);
+
+        models.User.add(userId).then(user => {
+            console.log("**************HELlLOEOOEO***************");
+            console.log("***USER?***")
+            console.log(user.user);
+            console.log("***CREATED?***")
+            console.log(user.created);
+            console.log("***MESSAGE?***");
+            console.log(user.message);
+            res.sendStatus(200);
         });
-        
 
-            //console.log(user);
-
-        /*      if (user) {
-                  console.log(user);
-              } else {
-                  console.log(user);
-              }*/
-
-        //res.sendStatus(200);
     } else {
         res.sendStatus(401).send('Unauthorized');
     }

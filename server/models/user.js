@@ -14,19 +14,28 @@ module.exports = function (sequelize, DataTypes) {
                     User.hasMany(models.Device)
                 },
                 add: function (userId) {
-                    User.sync({}).then(function () {
+                    return User.sync({}).then(function () {
                         //Table created or synched
-                        User.findOne({
+                       return User.findOne({
                             where: { id: userId }
                         }).then(function (user) {
+                            var userToReturn = {};
                             if (user == null) {
                                 return User.create({
                                     id: userId
+                                }).then(function (user) {
+                                    userToReturn["user"] = user;
+                                    userToReturn["created"] = true;
+                                    userToReturn["message"] = "Success";
+                                    return userToReturn;
                                 }).catch(function (error) {
-                                    console.log("Error creating user, userId: " + userId);
+                                    console.err("Error creating user, userId: " + userId);
                                 });
                             } else {
-                                return "User with ID " + userId + " already exists!"
+                                userToReturn["user"] = -1;
+                                userToReturn["created"] = false;
+                                userToReturn["message"] = "User with ID " + userId + " already exists!"
+                                return userToReturn;
                             }
                         }).catch(function (error) {
                             console.err("An error occured while creating User");
@@ -34,8 +43,21 @@ module.exports = function (sequelize, DataTypes) {
 
                     });
                 },
+                findOrAdd: function(userId) {
+                    return User.findOrCreate({
+                        where: { id: userId },
+                        defaults: { id: userId }
+                    }).spread(function(user, created) {
+                        console.log("In user findorAdd");
+                   
+                        return [user, created];
+                    }).catch(function(error) {
+                        console.err("An error occured while findOrAdding user by userId");
+                        return -1;
+                    })
+                },
                 find: function (userId) {
-                    User.findOne({
+                    return User.findOne({
                         where: { id: userId }
                     }).then(function (user) {
                         return user;
@@ -44,7 +66,7 @@ module.exports = function (sequelize, DataTypes) {
                     });
                 },
                 delete: function (userId) {
-                    User.destroy({
+                    return User.destroy({
                         where: { id: userId }
                     }).then(function(user) {
                         return user;
