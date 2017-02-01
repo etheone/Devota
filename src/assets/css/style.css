@@ -139,7 +139,7 @@ html, body, div.content {
 }
 
 body {
-  background: #3d464d;
+  background: #f5f5f5;
   color: #58666e;
   margin: 0;
   line-height: 1.7em;
@@ -441,9 +441,10 @@ b,strong {
 
 .sidebar {
   width: 125px;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  bottom: 0;
   font-family: 'Montserrat',sans-serif;
   background: #3d464d;
   z-index: 0;
