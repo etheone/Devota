@@ -7,10 +7,9 @@ module.exports = function (sequelize, DataTypes) {
         },
         device_name: {
             type: DataTypes.STRING,
-            field: 'deviceName',
-            allowNull: false,
+            allowNull: false
         },
-        type: {
+        description: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -23,32 +22,27 @@ module.exports = function (sequelize, DataTypes) {
                         foreignKey: {
                             allowNull: false
                         }
-
                     });
                     Device.hasMany(models.Data)
                 },
-                add: function (deviceId, name, type, userId, uniqueId) {
+                add: function (name, description, userId) {
                     return Device.sync({}).then(function () {
-                        return Data.findOne({
-                            where: { device_id: deviceId }
-                        }).then(function (data) {
-                            if (data == null) {
-                                return Device.create({
-                                    id: deviceId,
-                                    device_identifier: uniqueId,
-                                    device_name: name,
-                                    type: type,
-                                    user_id: userId
-                                });
-                            } else {
-                                return "Device with ID " + deviceId + " already exists!"
-                            }
+                        return Device.create({
+                            device_name: name,
+                            description: description,
+                            UserId: userId
+                        }).then(function (device) {
+                            return device;
                         }).catch(function (error) {
-                            console.err("An error occured while finding device by deviceId, timeStart and timeEnd");
+                            console.log(error);
+                            console.log("An error occured while adding device");
+                            return -1;
                         });
-                    }).catch(function(error) {
-                        console.err("An error occured while syncing in function add (Device) with table: Device");
-                    })
+                    }).catch(function (error) {
+                        console.log(error);
+                        console.log("An error occured while syncing in function add (Device) with table: Device");
+                        return -1;
+                    });
                 },
                 find: function (deviceId, userId) {
                     if (deviceId != null) {
@@ -72,7 +66,7 @@ module.exports = function (sequelize, DataTypes) {
                 remove: function (deviceId, userId) {
                     if (deviceId != null) {
                         //Delete device with deviceId
-                       return Device.destroy({
+                        return Device.destroy({
                             where: { device_id: deviceId }
                         }).then(function (device) {
                             return device;
@@ -90,17 +84,17 @@ module.exports = function (sequelize, DataTypes) {
                         });
                     }
                 },
-                edit: function(deviceId, deviceName) {
+                edit: function (deviceId, deviceName) {
                     return Device.update({
                         device_name: deviceName
-                       },
-                       {
-                        where: { id: deviceId }
-                    }).then(function(device) {
-                        return device;
-                    }).catch(function(error) {
-                        console.err("An error occured while updating device name by deviceId");
-                    });
+                    },
+                        {
+                            where: { id: deviceId }
+                        }).then(function (device) {
+                            return device;
+                        }).catch(function (error) {
+                            console.err("An error occured while updating device name by deviceId");
+                        });
                 }
 
             },

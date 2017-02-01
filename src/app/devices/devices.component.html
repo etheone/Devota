@@ -4,7 +4,6 @@
   <ol class="breadcrumb">
     <li class="active">This is a quick overview of some features</li>
   </ol>
-
   <!-- Start Page Header Right Div -->
   <div class="right">
     <button class="btn btn-primary" data-toggle="modal" data-target="#addDevice"><i class="fa fa-plus-circle"></i>New Device</button>
@@ -21,10 +20,40 @@
 
 <div class="col-md-12">
   <div class="panel">
-    
-    <h1>
-      {{title}}
-    </h1>
+    <div class="panel-body table-responsive">
+      <p>Devices</p>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td class="text-center"><i class="fa fa-trash"></i></td>
+            <td>Name</td>
+            <td>Device ID</td>
+            <td>Description</td>
+            <td>Updated</td>
+            <td>Added</td>
+            <td>Edit</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let device of devices | orderBy; let i = index;">
+            <td class="text-center">
+              <div class="checkbox margin-t-0"><input id="checkbox{{i}}" type="checkbox"><label for="checkbox{{i}}"></label></div>
+            </td>
+            <td>{{ device.device_name }}</td>
+            <td style="display: flex;">
+              <p style="flex-grow: 1; padding-top: 5px;"> <button class="btn btn-light btn-icon"><i class="fa fa-clipboard" style="float: right;"></i></button></p>
+              <p style="margin-left: 10px;">{{ device.id }}</p>
+             
+            </td>
+            <td>{{ device.description }}</td>
+            <td>{{ device.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            <td>{{ device.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+            <td> <button class="btn btn-light btn-icon"><i class="fa fa-edit"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 
@@ -39,18 +68,20 @@
       </div>
       <form>
         <div class="modal-body">
-            <div class="form-group">
-              <label for="input1" class="form-label">Name</label>
-              <input type="text" class="form-control" id="input1">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Description</label>
-              <textarea class="form-control" rows="3" id="textarea1"></textarea>
-            </div>
+          <div class="form-group">
+            <label for="input1" class="form-label">Name</label>
+            <input class="form-control" required [(ngModel)]="name" type="text" name="name">
+            <p>{{name}}</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <input class="form-control" required [(ngModel)]="desc" name="description">
+            <p>{{desc}}</p>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button [ngClass]="{disabled: !isValid()}" type="button" class="btn btn-primary" (click)="createDevice(name, desc)" data-dismiss="modal">Save changes</button>
         </div>
       </form>
     </div>

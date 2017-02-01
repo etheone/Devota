@@ -449,6 +449,7 @@ b,strong {
   z-index: 0;
   font-size: 13px;
   font-weight: normal;
+  min-height: 800px;
   z-index: 500;
   color: rgba(255,255,255,0.8)
 }

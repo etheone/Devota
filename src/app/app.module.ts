@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 
 import { AuthGuard } from './common/auth.guard';
 import { routes } from './app.routes';
+import { DeviceOrderByPipe } from './order-by.pipe';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp( new AuthConfig({}), http, options);
@@ -28,7 +29,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     DataComponent,
     GroupsComponent,
     PageNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    DeviceOrderByPipe
   ],
   imports: [
     BrowserModule,
