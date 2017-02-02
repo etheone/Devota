@@ -68,13 +68,73 @@ router.get('/devices/find', (req, res) => {
         userId = getUserId(req);
         models.Device.find(null, userId).then(device => {
             res.status(200).send(JSON.stringify(device));
-        })
+        });
     } else {
         res.sendStatus(401).send('Unauthorized');
     }
 });
 
+router.get('/devices/update', (req, res) => {
+    //To be implemented - Update device
+});
 
+router.get('/devices/remove', (req, res) => {
+    //To be implemented - Remove device
+});
+
+router.post('/data/add', (req, res) => {
+    //To be implemented - Add data
+    var body = req.body;
+    var deviceId = body.deviceId;
+
+    models.Device.find(deviceId, null).then(device => {
+        var data = JSON.stringify(body.data);
+        if (device != null) {
+           
+            models.Data.add(body.deviceId, data).then(data => {
+                if (data != null) {
+                    console.log("Successfully added data!");
+                    res.sendStatus(200);
+                } else {
+
+                    /////
+                    ///// ADD APPROPERIATE STATUS CODE
+                    /////
+                    res.sendStatus(400);
+                }
+            });
+
+        } else {
+           
+            res.sendStatus(400);
+        }
+    });
+
+    /*  if (checkDeviceId(deviceId)) {
+          console.log("IN HERE");
+          models.Data.add(body.deviceId, body.data).then(data => {
+              if (data != null) {
+                  res.sendStatus(200);
+              } else {
+  
+                  /////
+                  ///// ADD APPROPERIATE STATUS CODE
+                  /////
+                  res.sendStatus(400);
+              }
+          });
+      } else {
+          console.log("Not in there");
+  }*/
+});
+
+router.get('/data/remove', (req, res) => {
+    //To be implemented - Remove add
+});
+
+router.get('/data/find', (req, res) => {
+    //To be implemented - Find data
+});
 
 function randomString(length) {
     var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz'.split('');
@@ -107,6 +167,20 @@ function getUserId(req) {
         return res.status(401).send('unauthorized');
     }
     return decoded.sub;
+}
+
+function checkDeviceId(deviceId) {
+    models.Device.find(deviceId, null).then(device => {
+        console.log("DEVICE:");
+        console.log(device);
+        if (device != null) {
+            console.log("Device is true");
+            return true;
+        } else {
+            console.log("Device is false");
+            return false;
+        }
+    });
 }
 
 module.exports = router;

@@ -47,11 +47,13 @@ module.exports = function (sequelize, DataTypes) {
                 find: function (deviceId, userId) {
                     if (deviceId != null) {
                         return Device.findOne({
-                            where: { device_id: deviceId }
+                            where: { id: deviceId }
                         }).then(function (device) {
                             return device;
                         }).catch(function (error) {
-                            console.err("An error occured while finding device by deviceId");
+                            console.error("An error occured while finding device by deviceId");
+                            console.error(error);
+                            return -1;
                         });
                     } else {
                         return Device.findAll({
@@ -59,7 +61,8 @@ module.exports = function (sequelize, DataTypes) {
                         }).then(function (devices) {
                             return devices;
                         }).catch(function (error) {
-                            console.err("An error occured while finding device by deviceId");
+                            console.error("An error occured while finding device by deviceId");
+                            return -1;
                         });
                     }
                 },
@@ -71,7 +74,7 @@ module.exports = function (sequelize, DataTypes) {
                         }).then(function (device) {
                             return device;
                         }).catch(function (error) {
-                            console.err("An error occured while removing device by deviceId");
+                            console.error("An error occured while removing device by deviceId");
                         });
                     } else {
                         //Delete all devices belonging to userId
@@ -80,7 +83,7 @@ module.exports = function (sequelize, DataTypes) {
                         }).then(function (device) {
                             return device;
                         }).catch(function (error) {
-                            console.err("An error occured while removing device by deviceId");
+                            console.error("An error occured while removing device by deviceId");
                         });
                     }
                 },
@@ -93,7 +96,7 @@ module.exports = function (sequelize, DataTypes) {
                         }).then(function (device) {
                             return device;
                         }).catch(function (error) {
-                            console.err("An error occured while updating device name by deviceId");
+                            console.error("An error occured while updating device name by deviceId");
                         });
                 }
 

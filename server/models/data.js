@@ -4,20 +4,13 @@ module.exports = function (sequelize, DataTypes) {
     var Data = sequelize.define('Data', {
         id: {
             type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV1,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         data: {
             type: DataTypes.STRING,
             allowNull: false
-
-        },
-        time: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: sequelize.NOW,
-            field: 'time'
-        },
+        }
     },
         {
             classMethods: {
@@ -29,19 +22,21 @@ module.exports = function (sequelize, DataTypes) {
                         }
                     });
                 },
-                add: function (dataId, data, time) {
+                add: function (deviceId, data) {
                     return Data.sync({}).then(function () {
                         return Data.create({
-                            id: dataId,
                             data: data,
-                            time: time,
+                            DeviceId: deviceId
                         }).then(function (data) {
                             return data;
                         }).catch(function (error) {
-                            console.err("An error occured while adding Data");
+                            console.log(error);
+                            console.log("An error occured while adding Data");
+                            return -1;
                         });
                     }).catch(function (error) {
-                        console.err("An error occured in function add (Data) while syncing with table: Data");
+                        console.log("An error occured in function add (Data) while syncing with table: Data");
+                        return -1;
                     })
                 },
                 remove: function (args) {
