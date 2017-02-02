@@ -11,7 +11,8 @@ module.exports = function (sequelize, DataTypes) {
         {
             classMethods: {
                 associate: function (models) {
-                    User.hasMany(models.Device)
+                    User.hasMany(models.Device),
+                    User.hasMany(models.Group)
                 },
                 add: function (userId) {
                     /*return User.sync({}).then(function () {
