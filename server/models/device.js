@@ -51,7 +51,8 @@ module.exports = function (sequelize, DataTypes) {
                 find: function (deviceId, userId) {
                     if (deviceId != null) {
                         return Device.findOne({
-                            where: { id: deviceId }
+                            where: { id: deviceId },
+                            attributes: ['id', 'userId', 'createdAt', 'updatedAt', 'device_name', 'description']
                         }).then(function (device) {
                             return device;
                         }).catch(function (error) {
@@ -61,11 +62,13 @@ module.exports = function (sequelize, DataTypes) {
                         });
                     } else {
                         return Device.findAll({
-                            where: { UserId: userId }
+                            where: { UserId: userId },
+                            attributes: ['id', 'userId', 'createdAt', 'updatedAt', 'device_name', 'description']
                         }).then(function (devices) {
                             return devices;
                         }).catch(function (error) {
-                            console.error("An error occured while finding device by deviceId");
+                            console.log(error);
+                            console.error("An error occured while finding device by userId");
                             return -1;
                         });
                     }

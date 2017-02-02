@@ -89,6 +89,7 @@ router.post('/data/add', (req, res) => {
     var userId = getUserId(req);
     models.Device.find(null, userId).then(devices => {
         if (devices != null) {
+            console.log(devices);
             var count = devices.length;
             var deviceNr = Math.floor((Math.random() * (count + 1)));
             console.log("Device # in /data/add: " + deviceNr);
