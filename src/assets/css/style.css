@@ -3883,7 +3883,24 @@ table td {
 
 .table>thead>tr>th,.table>tbody>tr>th,.table>tfoot>tr>th,.table>thead>tr>td,.table>tbody>tr>td,.table>tfoot>tr>td {
   padding: 15px;
-  line-height: 1.7
+  line-height: 1.7;
+  vertical-align: middle;
+}
+
+.table>tbody tr td .checkbox {
+  display: flex;
+}
+
+.clipboard-container {
+  position: relative;
+  padding-left: 48px;
+}
+
+.clipboard-icon {
+  position: absolute;
+  left: 0; top: 50%;
+  margin-top: -18px;
+  height: 37px;
 }
 
 .doc-grid {
