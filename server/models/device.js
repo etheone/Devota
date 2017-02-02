@@ -23,6 +23,10 @@ module.exports = function (sequelize, DataTypes) {
                             allowNull: false
                         }
                     });
+                    Device.belongsToMany(models.Group, {
+                        onDelete: 'CASCADE',
+                        through: 'GroupDevices'
+                    });
                     Device.hasMany(models.Data)
                 },
                 add: function (name, description, userId) {
@@ -70,7 +74,7 @@ module.exports = function (sequelize, DataTypes) {
                     if (deviceId != null) {
                         //Delete device with deviceId
                         return Device.destroy({
-                            where: { device_id: deviceId }
+                            where: { id: deviceId }
                         }).then(function (device) {
                             return device;
                         }).catch(function (error) {
