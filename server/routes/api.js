@@ -85,30 +85,43 @@ router.get('/devices/remove', (req, res) => {
 router.post('/data/add', (req, res) => {
     //To be implemented - Add data
     var body = req.body;
-    var deviceId = body.deviceId;
+    var deviceId;
+    var userId = getUserId(req);
+    models.Device.find(null, userId).then(devices => {
+        if (devices != null) {
+            var count = devices.length;
+            var deviceNr = Math.floor((Math.random() * (count + 1)));
+            console.log("Device # in /data/add: " + deviceNr);
+            deviceId = devices[deviceNr].id;
+            console.log("DeviceID in /data/add: " + deviceId);
+            models.Device.find(deviceId, null).then(device => {
+                var data = JSON.stringify(body.data);
+                if (device != null) {
 
-    models.Device.find(deviceId, null).then(device => {
-        var data = JSON.stringify(body.data);
-        if (device != null) {
-           
-            models.Data.add(body.deviceId, data).then(data => {
-                if (data != null) {
-                    console.log("Successfully added data!");
-                    res.sendStatus(200);
+                    models.Data.add(deviceId, data).then(data => {
+                        if (data != null) {
+                            console.log("Successfully added data!");
+                            res.sendStatus(200);
+                        } else {
+
+                            /////
+                            ///// ADD APPROPERIATE STATUS CODE
+                            /////
+                            res.sendStatus(400);
+                        }
+                    });
+
                 } else {
 
-                    /////
-                    ///// ADD APPROPERIATE STATUS CODE
-                    /////
                     res.sendStatus(400);
                 }
             });
-
         } else {
-           
             res.sendStatus(400);
         }
     });
+
+
 
     /*  if (checkDeviceId(deviceId)) {
           console.log("IN HERE");
