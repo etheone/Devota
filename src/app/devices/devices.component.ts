@@ -13,6 +13,7 @@ export class DevicesComponent implements OnInit {
   devices = [];
   name: string = "";
   desc: string = "";
+  editingId: string = "";
   constructor(private auth: AuthService, private dbService: DbService) { }
 
   createDevice(name, desc) {
@@ -33,6 +34,19 @@ export class DevicesComponent implements OnInit {
 
     this.name = "";
     this.desc = "";
+    this.fieldsOk = false;
+  }
+
+  updateDevice(name, desc) {
+    this.dbService.updateDevice(this.editingId, name, desc).then((device) => {
+      console.log("Response from /devices/create:");
+      console.log(device);
+      console.log("promise after editDevice");
+     
+    });
+    this.name = "";
+    this.desc = "";
+    this.editingId = "";
     this.fieldsOk = false;
   }
 

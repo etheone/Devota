@@ -30,9 +30,17 @@ export class DbService {
       .catch(this.handleError);
   }
 
-  updateDevice(): Promise<Device[]> {
-    //To be implemented - Update device
-    return null;
+  updateDevice(deviceId, name, description): Promise<Device[]> {
+    let device = JSON.stringify({ "deviceId": deviceId, "deviceName": name, "description": description });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers, method: "post" });
+
+    return this.authHttp.post("http://localhost:3000/api/devices/update", device, options)
+
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
+
   }
 
   removeDevices(deviceIds): Promise<any> {
