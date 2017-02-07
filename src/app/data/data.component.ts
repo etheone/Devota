@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { DbService } from '../dbservice.service';
+import { Data } from '../data';
 @Component({
   selector: 'app-data',
   templateUrl: './data.component.html',
   styleUrls: ['./data.component.css'],
-  providers: [DbService]
+  providers: [AuthService, DbService]
 })
 export class DataComponent implements OnInit {
-
-  constructor(private dbService: DbService) { }
+  data = [];
+  
+  constructor(private auth: AuthService, private dbService: DbService) { }
 
   //Add mock data - TEMPORARY until devices are connected for real
   addMockData() {
@@ -21,7 +24,21 @@ export class DataComponent implements OnInit {
     });
   }
 
+  getData() {
+    this.dbService.getData().then((data) => {
+      console.log("Data: ");
+      console.log(data);
+      if (data.valueOf() != -1) {
+        this.data = data;
+      } else {
+        var emptyDevice = new Data("", "", "You do not yet have any devices, add one to see it here", "");
+        this.data.push(data);
+      }
+    });
+  }
+
   ngOnInit() {
+    this.getData();
   }
 
 }

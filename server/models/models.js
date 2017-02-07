@@ -14,7 +14,7 @@ var config    = require(path.join(__dirname, '..', 'config', 'config.json'))[env
 var sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,
   port: config.port,
-  logging: false
+  logging: console.log
 });
 //}
 var db        = {};
