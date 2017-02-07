@@ -94,9 +94,10 @@ module.exports = function (sequelize, DataTypes) {
                         });
                     }
                 },
-                edit: function (deviceId, deviceName) {
+                edit: function (deviceId, deviceName, description) {
                     return Device.update({
-                        device_name: deviceName
+                        device_name: deviceName,
+                        description: description
                     },
                         {
                             where: { id: deviceId }

@@ -74,8 +74,26 @@ router.get('/devices/find', (req, res) => {
     }
 });
 
-router.get('/devices/update', (req, res) => {
+router.post('/devices/update', (req, res) => {
     //To be implemented - Update device
+    if (checkAuthorization(req)) {
+        var device = req.body;
+        console.log("/devices/update");
+        console.log(device);
+        console.log(device.deviceId);
+        models.Device.edit(device.deviceId, device.deviceName, device.description).then(device => {
+            if (device != null) {
+                console.log("Device from edit callback");
+                console.log(device);
+                console.log(device[0]);
+                res.status(200).send(JSON.stringify(device));
+            } else  {
+                res.sendStatus(400);
+            }
+        });
+    } else {
+        res.sendStatus(401).send('Unauthorized');
+    }
 });
 
 router.get('/devices/remove', (req, res) => {

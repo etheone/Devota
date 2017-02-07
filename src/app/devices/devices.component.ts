@@ -13,7 +13,11 @@ export class DevicesComponent implements OnInit {
   devices = [];
   name: string = "";
   desc: string = "";
+
   editingId: string = "";
+  modalName: string = "";
+  modalDescription: string = "";
+
   constructor(private auth: AuthService, private dbService: DbService) { }
 
   createDevice(name, desc) {
@@ -42,12 +46,34 @@ export class DevicesComponent implements OnInit {
       console.log("Response from /devices/create:");
       console.log(device);
       console.log("promise after editDevice");
-     
+      console.log(name);
+      this.updateDeviceFields(this.editingId, name, desc);
+      this.name = "";
+      this.desc = "";
+      this.editingId = "";
+      this.modalName = "";
+      this.modalDescription = "";
+      this.fieldsOk = false;
     });
-    this.name = "";
-    this.desc = "";
-    this.editingId = "";
-    this.fieldsOk = false;
+
+ 
+  }
+
+  editDevice(id, name, desc) {
+    this.editingId = id;
+    this.modalName = name;
+    this.modalDescription = desc;
+  }
+
+  updateDeviceFields(id, name, description) {
+    for (var i in this.devices) {
+      if (this.devices[i].id == id) {
+        this.devices[i].device_name = name;
+        this.devices[i].description = description;
+        break; //Stop this loop, we found it!
+      }
+    }
+
   }
 
   isValid() {
@@ -65,6 +91,8 @@ export class DevicesComponent implements OnInit {
       console.log(devices);
       if (devices.valueOf() != -1) {
         this.devices = devices;
+        console.log("Devices");
+        console.log(this.devices);
       } else {
         var emptyDevice = new Device("", "", "You do not yet have any devices, add one to see it here", "");
         this.devices.push(emptyDevice);

@@ -30,7 +30,8 @@ export class DbService {
       .catch(this.handleError);
   }
 
-  updateDevice(deviceId, name, description): Promise<Device[]> {
+  updateDevice(deviceId, name, description): Promise<Device> {
+    console.log("ID: " + deviceId + "      Name: " + name + "     Description: " + description);
     let device = JSON.stringify({ "deviceId": deviceId, "deviceName": name, "description": description });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers, method: "post" });
