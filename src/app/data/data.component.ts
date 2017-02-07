@@ -10,7 +10,7 @@ import { Data } from '../data';
 })
 export class DataComponent implements OnInit {
   data = [];
-  
+
   constructor(private auth: AuthService, private dbService: DbService) { }
 
   //Add mock data - TEMPORARY until devices are connected for real
@@ -23,7 +23,7 @@ export class DataComponent implements OnInit {
       }
     });
   }
-
+/*
   getData() {
     this.dbService.getData().then((data) => {
       console.log("Data: ");
@@ -36,9 +36,9 @@ export class DataComponent implements OnInit {
       }
     });
   }
-
+*/
   ngOnInit() {
-    this.getData();
+    //this.getData();
   }
 
 }
