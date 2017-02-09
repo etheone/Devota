@@ -86,71 +86,14 @@ module.exports = function (sequelize, DataTypes) {
                     }
                 },
                 findByUser: function (models, userId) {
-                    return Data.findAll({
-                        where: {
-                            DeviceId: models.Device.id,
-                            $and: [
-                                {
-                                    UserId: {
-                                        $eq: userId
-                                    }
-                                }
-                            ]
-                        },
-                        include: [
-                            {
-                                model: models.Device
-                            }
-                        ],
-                        attributes: ['id']
-
-                    }).then(function (data) {
+                    return sequelize.query("SELECT da.* FROM `Data` da JOIN `Device` de ON da.DeviceId = de.id WHERE de.UserId = 'auth0|57a1a50ce6b8fa2817471868';", {
+                        type: sequelize.QueryTypes.SELECT
+                    }).then(function (data, meta) {
                         return data
                     }).catch(function (error) {
                         console.log(error);
                         console.error("An error occured while finding data by userid");
                     });
-                },
-                find: function () {
-                    /*                   combinations
-                    *   args = { deviceId = x, timeStart = a, timeEnd = b}
-                    *   args = { deviceId }
-                    *   args = { timeStart, timeEnd}
-                    *   
-                    */
-
-                    switch (args.length()) {
-                        case 1:
-                            //deviceId
-                            return Data.findAll({
-                                where: { device_id: args[0] }
-                            }).then(function (data) {
-                                return data
-                            }).catch(function (error) {
-                                console.error("An error occured while finding data by deviceId");
-                            });
-
-                        case 2:
-                            //timeStart and timeEnd
-                            return Data.findAll({
-                                where: { time: { $between: [args[0], args[1]] } }
-                            }).then(function (data) {
-                                return data
-                            }).catch(function (error) {
-                                console.error("An error occured while finding data by timeStart and timeEnd");
-                            });
-
-                        case 3:
-                            //deviceId, timeStart and timeEnd
-                            return Data.findAll({
-                                where: { time: { $between: [timeStart, timeEnd], $and: [{ device_id: args[0] }] } }
-                            }).then(function (data) {
-                                return data
-                            }).catch(function (error) {
-                                console.error("An error occured while finding data by deviceId, timeStart and timeEnd");
-                            });
-
-                    }
                 }
 
             }

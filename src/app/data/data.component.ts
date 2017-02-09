@@ -23,9 +23,9 @@ export class DataComponent implements OnInit {
       }
     });
   }
-/*
-  getData() {
-    this.dbService.getData().then((data) => {
+
+ /* getData() {
+    this.dbService.getAllData().then((data) => {
       console.log("Data: ");
       console.log(data);
       if (data.valueOf() != -1) {
@@ -35,8 +35,8 @@ export class DataComponent implements OnInit {
         this.data.push(data);
       }
     });
-  }
-*/
+}*/
+
   ngOnInit() {
     //this.getData();
   }
