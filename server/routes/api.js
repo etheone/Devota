@@ -61,14 +61,13 @@ router.post('/devices/create', (req, res) => {
     }
 });
 
-router.get('/devices/findbyuser', (req, res) => {
+router.get('/devices/find', (req, res) => {
     //console.log("req.body in /devices/find");
 
     if (checkAuthorization(req)) {
         userId = getUserId(req);
-        models.Data.findByUser(models, "auth0|57a1a50ce6b8fa2817471868").then(data => {
-            console.log(data);
-            res.send(JSON.stringify(data));
+        models.Device.find(null, userId).then(device => {
+            res.status(200).send(JSON.stringify(device));
         });
     } else {
         res.sendStatus(401).send('Unauthorized');
@@ -169,7 +168,17 @@ router.get('/data/find', (req, res) => {
 
     if (checkAuthorization(req)) {
         userId = getUserId(req);
-        models.Data.find(null, userId).then(data => {
+
+    } else {
+        res.sendStatus(401).send('Unauthorized');
+    }
+});
+
+router.get('/data/findbyuser', (req, res) => {
+
+    if (checkAuthorization(req)) {
+        userId = getUserId(req);
+        models.Data.findByUser(null, userId).then(data => {
             res.status(200).send(JSON.stringify(data));
         });
     } else {

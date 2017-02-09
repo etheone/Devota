@@ -1,16 +1,17 @@
 export class Data {
     id: string;
-    name: string;
-    description: string;
+    data: {};
     created: Date;
     updated: Date;
+    deviceId: string;
     
 
-    constructor(id, name, description, updated) {
+    constructor(id, data, created, updated, deviceId) {
         this.id = id;
-        this.name = name;
-        this.description = description;
+        this.data = data;
+        this.created = created;
         this.updated = updated;
+        this.deviceId = deviceId;
 
     }
 }

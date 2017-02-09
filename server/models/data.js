@@ -86,7 +86,7 @@ module.exports = function (sequelize, DataTypes) {
                     }
                 },
                 findByUser: function (models, userId) {
-                    return sequelize.query("SELECT da.* FROM `Data` da JOIN `Device` de ON da.DeviceId = de.id WHERE de.UserId = 'auth0|57a1a50ce6b8fa2817471868';", {
+                    return sequelize.query("SELECT da.*, de.device_name FROM `Data` da JOIN `Device` de ON da.DeviceId = de.id WHERE de.UserId = 'auth0|57a1a50ce6b8fa2817471868';", {
                         type: sequelize.QueryTypes.SELECT
                     }).then(function (data, meta) {
                         return data

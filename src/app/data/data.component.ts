@@ -9,14 +9,14 @@ import { Data } from '../data';
   providers: [AuthService, DbService]
 })
 export class DataComponent implements OnInit {
-  data = [];
+  dataArray = [];
 
   constructor(private auth: AuthService, private dbService: DbService) { }
 
   //Add mock data - TEMPORARY until devices are connected for real
   addMockData() {
     this.dbService.addData().then((res) => {
-      if(res == 200) {
+      if (res == 200) {
         alert("You've now successfully added data");
       } else {
         alert("Adding data didn't really go your way");
@@ -24,21 +24,21 @@ export class DataComponent implements OnInit {
     });
   }
 
- /* getData() {
+  getData() {
     this.dbService.getAllData().then((data) => {
       console.log("Data: ");
       console.log(data);
-      if (data.valueOf() != -1) {
-        this.data = data;
+      if (data.length > 0) {
+        this.dataArray = data;
       } else {
-        var emptyDevice = new Data("", "", "You do not yet have any devices, add one to see it here", "");
-        this.data.push(data);
+        var emptyData = new Data("", "", "You do not yet have any devices, add one to see it here", "", "");
+        this.dataArray.push(data);
       }
     });
-}*/
+  }
 
   ngOnInit() {
-    //this.getData();
+    this.getData();
   }
 
 }

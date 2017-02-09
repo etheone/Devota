@@ -50,10 +50,17 @@ export class DbService {
   }
 
   getAllData(): Promise<Data[]> {
-    return this.authHttp.get("http://localhost:3000/api/data/findbyuser/")
+    return this.authHttp.get("http://localhost:3000/api/data/findbyuser")
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
+  }
+
+  getDeviceData(): Promise<Data[]> {
+    return this.authHttp.get("http://localhost:300/api/data/findbydevice")
+    .toPromise()
+    .then(this.extractData)
+    .catch(this.handleError);
   }
 
   getLatestData(userId): Promise<Data[]> {
