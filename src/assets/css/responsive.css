@@ -15,31 +15,41 @@ smaller than 1280
 /* =================================================================================
 smaller than 1024
 ================================================================================= */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
 	.profilebox b{display: none;}
 	.searchform{display: none;}
-	.sidebar{display: none;}
-	.content{margin-left: 0 !important;}
+	.sidebar{position: absolute; left: -125px; transition:left 0.25s linear;}
+	.content{margin-left: 0; transition:margin-left 0.25s linear;}
 	.sidebar-open-button{display: none;}
 	.sidebar-open-button-mobile{display: block;}
 	.social-stats{bottom: 100px;}
 	.topstats li{width: 33%;}
 	.demo-sidebarmenu .sidebar{display: block;}
+
+	.footer { left: 0; transition:left 0.25s linear; }
+	.menu-icon {display: block}
+	#page-container.menu-open .sidebar{left: 0}
+	#page-container.menu-open .content{margin-left: 125px}
+	#page-container.menu-open .footer{left: 125px}
+	.menu-icon {position: absolute; top: 10px; right: 10px; z-index: 1}
 }
 
 /* =================================================================================
 bigger than 1024
 ================================================================================= */
 @media screen and (min-width: 1024px) {
-	.sidebar{display: block !important;}
+	#page-container:not(.menu-open) .sidebar{display: block !important;}
+	.menu-icon {display: none}
 }
 
 /* =================================================================================
 smaller than 760
 ================================================================================= */
 @media screen and (max-width: 760px) {
+	.content {padding-left: 0; padding-right: 0;}
+	.content .page-header {margin: -20px 0 20px 0;}
 	.page-header .right{display: none;}
-	.sidebar{display: none; width: 100%;}
+	/*.sidebar{display: none; width: 100%;}*/
 	.presentation .list{float: left; margin-top: 20px;}
 	.applogo{display: none;}
 	.container-default, .container-widget{margin-left:-20px; margin-right: -20px;}

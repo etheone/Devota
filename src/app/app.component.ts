@@ -9,6 +9,11 @@ import { AuthService } from './auth.service';
 
 })
 export class AppComponent {
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService) { }
   title = 'app works!';
+  menuVisible = false;
+
+  menuClicked() {
+    this.menuVisible = !this.menuVisible
+  }
 }
