@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, Http, RequestOptions } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
+import { AceEditorComponent } from 'ng2-ace-editor';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -18,12 +19,13 @@ import { routes } from './app.routes';
 import { DeviceOrderByPipe } from './order-by.pipe';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
-  return new AuthHttp( new AuthConfig({}), http, options);
+  return new AuthHttp(new AuthConfig({}), http, options);
 }
 
 @NgModule({
   declarations: [
     AppComponent,
+    AceEditorComponent,
     DashboardComponent,
     DevicesComponent,
     DataComponent,
@@ -43,7 +45,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
-      deps: [ Http, RequestOptions ]
+      deps: [Http, RequestOptions]
     }
   ],
   bootstrap: [AppComponent]
