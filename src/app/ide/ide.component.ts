@@ -1,7 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-
-import 'brace/theme/clouds';
-import 'brace/mode/sql';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-ide',
@@ -10,33 +7,45 @@ import 'brace/mode/sql';
 })
 
 export class IdeComponent {
-    @ViewChild('editor') editor;
-    text: string = "";
-    
+  @ViewChild('editor') editor;
+  text: string = ``;
+  innerHate: number;
+  @ViewChild('windowSize') bodyEl: ElementRef;
 
-    constructor() {
+  constructor() {
+  }
 
-    }
+  ngAfterViewInit() {
+    //this.editor.setTheme("eclipse");
+    this.editor.setTheme("monokai");
+    this.editor.setMode("c_cpp");
+    this.editor._editor.$blockScrolling = Infinity;
+    this.editor._editor.setBehavioursEnabled(false);
+    this.editor.getEditor().setOptions({
+      useWorker: false,
+      autoScrollEditorIntoView: true,
+      
+    });
 
-    ngAfterViewInit() {
-        //this.editor.setTheme("eclipse");
-        this.editor.setTheme("monokai");
-        this.editor.setMode("c_cpp");
-        this.editor._editor.$blockScrolling = Infinity
-        this.editor.getEditor().setOptions({
-            useWorker: false,
-            autoScrollEditorIntoView: true
-        });
-  
+    console.log(this.editor);
+    this.editor._editor.text = this.text;
+    this.editor.getEditor().commands.addCommand({
+      name: "showOtherCompletions",
+      bindKey: "Ctrl-.",
+      exec: function (editor) {
 
-        this.editor.getEditor().commands.addCommand({
-            name: "showOtherCompletions",
-            bindKey: "Ctrl-.",
-            exec: function (editor) {
-              console.log(editor);
-            }
-        })
-    }
+      }
+    });
+    this.innerHate = this.bodyEl.nativeElement.offsetHeight;
+
+  }
+
+  onResize(event) {
+    this.innerHate = this.bodyEl.nativeElement.offsetHeight;
+  }
+
+
+
 }
 
 /*

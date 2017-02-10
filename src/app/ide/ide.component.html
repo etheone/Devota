@@ -1,5 +1,6 @@
 
   <!-- Start Page Header -->
+  <div (window:resize)="onResize($event)" id="windowSize" #windowSize></div>
   <div class="page-header">
     <h1 class="title">IDE</h1>
       <ol class="breadcrumb">
@@ -32,5 +33,5 @@
        style="min-height: 200px; width:100%; overflow: auto;"></div>-->
        <ace-editor
        [(text)]="text"
-        #editor style="min-height:400px; width:100%; display: block;"></ace-editor>
+        #editor [style.height.px]="innerHate - 185" style="width:100%; display: block;"></ace-editor>
 </div>

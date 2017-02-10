@@ -20,7 +20,7 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": ["../node_modules/ace-builds/src-min/ace.js", "../node_modules/ace-builds/src-min/theme-monokai.js", "../node_modules/ace-builds/src/worker-json.js", "../node_modules/ace-builds/src-min/mode-c_cpp.js"],
+      "scripts": ["../node_modules/ace-builds/src-min/ace.js", "../node_modules/ace-builds/src-min/theme-monokai.js", "../node_modules/ace-builds/src/worker-json.js", "../node_modules/ace-builds/src-min/mode-c_cpp.js", "../node_modules/ace-builds/src-min/ext-language_tools.js"],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
