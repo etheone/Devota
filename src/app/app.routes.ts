@@ -3,7 +3,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DevicesComponent } from './devices/devices.component';
 import { DataComponent } from './data/data.component';
-import { GroupsComponent } from './groups/groups.component';
+import { IdeComponent } from './ide/ide.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './common/auth.guard';
@@ -36,8 +36,8 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'groups',
-    component: GroupsComponent,
+    path: 'ide',
+    component: IdeComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -65,8 +65,8 @@ export const routes: Routes = [
     component: DataComponent
   },
   {
-    path: 'groups',
-    component: GroupsComponent
+    path: 'ide',
+    component: IdeComponent
   },
   {
     path: '**',

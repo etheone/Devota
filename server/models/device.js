@@ -13,6 +13,9 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
         },
+        code: {
+            type: DataTypes.TEXT,
+        },
     },
         {
             classMethods: {
@@ -22,10 +25,6 @@ module.exports = function (sequelize, DataTypes) {
                         foreignKey: {
                             allowNull: false
                         }
-                    });
-                    Device.belongsToMany(models.Group, {
-                        onDelete: 'CASCADE',
-                        through: 'GroupDevices'
                     });
                     Device.hasMany(models.Data)
                 },
