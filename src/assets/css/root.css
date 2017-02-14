@@ -1,10 +1,8 @@
 /* ================================================
 Google Web Fonts
 ================================================ */
-/* Montserrat */
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-/* Roboto */
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900,700italic,500italic,400italic,300italic,100italic);
+/* Lato and Open Sans */
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700|Open+Sans&amp;subset=latin-ext);
 
 /* === Icons === */
 /* Font Awesome */

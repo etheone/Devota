@@ -144,7 +144,7 @@ body {
   margin: 0;
   line-height: 1.7em;
   font-size: 13px;
-  font-family: 'Roboto',sans-serif;
+  font-family: 'Open Sans',sans-serif;
   outline: 0;
   text-Shadow: 0 0 1px rgba(0,0,0,0.2)
 }
@@ -167,7 +167,7 @@ a:hover,a:focus {
 }
 
 b,strong {
-  font-weight: 600
+  font-weight: 700
 }
 
 .col-xs-1,.col-sm-1,.col-md-1,.col-lg-1,.col-xs-2,.col-sm-2,.col-md-2,.col-lg-2,.col-xs-3,.col-sm-3,.col-md-3,.col-lg-3,.col-xs-4,.col-sm-4,.col-md-4,.col-lg-4,.col-xs-5,.col-sm-5,.col-md-5,.col-lg-5,.col-xs-6,.col-sm-6,.col-md-6,.col-lg-6,.col-xs-7,.col-sm-7,.col-md-7,.col-lg-7,.col-xs-8,.col-sm-8,.col-md-8,.col-lg-8,.col-xs-9,.col-sm-9,.col-md-9,.col-lg-9,.col-xs-10,.col-sm-10,.col-md-10,.col-lg-10,.col-xs-11,.col-sm-11,.col-md-11,.col-lg-11,.col-xs-12,.col-sm-12,.col-md-12,.col-lg-12 {
@@ -248,7 +248,7 @@ b,strong {
   color: #fff;
   font-size: 30px;
   font-weight: bold;
-  font-family: 'Montserrat',sans-serif
+  font-family: 'Lato',sans-serif
 }
 
 .sidebar-open-button {
@@ -324,7 +324,7 @@ b,strong {
   float: left;
   padding-top: 20px;
   padding-left: 0;
-  font-weight: 600;
+  font-weight: 700;
   margin-left: -7px
 }
 
@@ -364,7 +364,7 @@ b,strong {
   padding-right: 20px;
   padding-left: 10px;
   padding-top: 15px;
-  font-weight: 600
+  font-weight: 700
 }
 
 .top-right .link {
@@ -445,7 +445,7 @@ b,strong {
   top: 0;
   left: 0;
   bottom: 0;
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   background: #2d343a;
   z-index: 0;
   font-size: 13px;
@@ -463,7 +463,7 @@ b,strong {
   position: absolute;
   right: 35px;
   top: 12px;
-  font-weight: 600
+  font-weight: 700
 }
 
 .sidebar .label-default {
@@ -714,7 +714,7 @@ b,strong {
 
 .sidepanel-m-title {
   text-align: center;
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   font-size: 14px;
   color: #37363e;
   padding: 16px 0;
@@ -757,7 +757,7 @@ b,strong {
 }
 
 .list-w-title .label {
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   font-size: 11px
 }
 
@@ -780,12 +780,12 @@ b,strong {
 .list-w-title h4 {
   margin: 5px 0;
   font-size: 13px;
-  font-family: 'Montserrat',sans-serif
+  font-family: 'Lato',sans-serif
 }
 
 .gn-title {
   background: #E4E4E4;
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   font-size: 12px;
   margin: 0 -20px;
   padding: 4px 0 4px 20px
@@ -829,7 +829,7 @@ b,strong {
 }
 
 #chat .group .member b {
-  font-weight: 600;
+  font-weight: 700;
   display: block;
   font-size: 13px
 }
@@ -911,7 +911,7 @@ b,strong {
 .page-header .title {
   padding: 0;
   margin: 0;
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   font-size: 20px;
   line-height: normal;
   font-weight: normal;
@@ -1002,8 +1002,8 @@ b,strong {
 
 .presentation .titles h1 {
   font-size: 38px;
-  font-weight: 600;
-  font-family: 'Montserrat',sans-serif;
+  font-weight: 700;
+  font-family: 'Lato',sans-serif;
   margin: 30px 0 0px 0;
   color: #37363e
 }
@@ -1082,14 +1082,14 @@ b,strong {
 .kode-alert a {
   color: inherit;
   text-decoration: underline;
-  font-weight: 600
+  font-weight: 700
 }
 
 .kode-alert h4 {
   font-size: 14px;
   margin: 0;
   color: inherit;
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal
 }
 
@@ -1558,12 +1558,12 @@ b,strong {
 }
 
 .changelogs .title {
-  font-weight: 600
+  font-weight: 700
 }
 
 .changelogs .version {
   font-size: 13px;
-  font-family: 'Montserrat',sans-serif
+  font-family: 'Lato',sans-serif
 }
 
 .changelogs .date {
@@ -1670,7 +1670,7 @@ b,strong {
 
 .social-stats li b {
   display: block;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 20px
 }
 
@@ -1772,7 +1772,7 @@ b,strong {
 .status .comments .name {
   color: #58666e;
   display: block;
-  font-weight: 600
+  font-weight: 700
 }
 
 .invoice {
@@ -1780,7 +1780,7 @@ b,strong {
   position: relative;
   padding: 70px;
   border: 1px solid #ccc;
-  font-family: 'Montserrat',sans-serif
+  font-family: 'Lato',sans-serif
 }
 
 .invoice .logo {
@@ -1788,7 +1788,7 @@ b,strong {
   text-align: center;
   color: #76747A;
   font-weight: 300;
-  font-family: 'Roboto',sans-serif;
+  font-family: 'Open Sans',sans-serif;
   font-size: 16px
 }
 
@@ -1832,7 +1832,7 @@ b,strong {
 }
 
 .invoice .table p {
-  font-family: 'Roboto',sans-serif;
+  font-family: 'Open Sans',sans-serif;
   font-size: 14px;
   color: #76747A
 }
@@ -1855,7 +1855,7 @@ b,strong {
 
 .invoice .bottomtext {
   font-size: 11px;
-  font-family: 'Roboto',sans-serif
+  font-family: 'Open Sans',sans-serif
 }
 
 .invoice .invoicename {
@@ -1906,7 +1906,7 @@ b,strong {
 .login-form form .top h1 {
   color: #37363E;
   font-size: 30px;
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   font-weight: bold;
   margin-top: -14px
 }
@@ -1941,7 +1941,7 @@ b,strong {
 
 .login-form form .form-area .btn {
   height: 42px;
-  font-weight: 600
+  font-weight: 700
 }
 
 .login-form form .form-area .checkbox {
@@ -1973,7 +1973,7 @@ b,strong {
 
 .error-pages h1 {
   color: #37363e;
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   font-size: 28px
 }
 
@@ -2032,7 +2032,7 @@ b,strong {
 
 .topstats .title {
   color: #37363e;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 13px
 }
 
@@ -2046,7 +2046,7 @@ b,strong {
 .topstats h3 {
   font-size: 28px;
   font-weight: bold;
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   letter-spacing: -1px;
   line-height: normal;
   margin: 1px 0
@@ -2108,7 +2108,7 @@ b,strong {
   display: block;
   font-size: 20px;
   font-weight: bold;
-  font-family: 'Montserrat',sans-serif
+  font-family: 'Lato',sans-serif
 }
 
 .easypie canvas {
@@ -2336,7 +2336,7 @@ dt,dd {
 }
 
 .font-title {
-  font-family: 'Montserrat',sans-serif
+  font-family: 'Lato',sans-serif
 }
 
 .font-w-300 {
@@ -2348,7 +2348,7 @@ dt,dd {
 }
 
 .font-w-600 {
-  font-weight: 600
+  font-weight: 700
 }
 
 .font-w-700 {
@@ -2360,7 +2360,7 @@ dt,dd {
 }
 
 .font-title-tab {
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   text-transform: uppercase;
   font-weight: bold;
   font-size: 12px
@@ -2737,7 +2737,7 @@ dt,dd {
 .label {
   font-size: inherit;
   padding: 1px 6px;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 4px
 }
 
@@ -2885,7 +2885,7 @@ input,select {
   line-height: inherit;
   color: #333;
   border: 0;
-  font-weight: 600;
+  font-weight: 700;
   border-bottom: none
 }
 
@@ -2932,7 +2932,7 @@ input,select {
 .input-group-addon {
   background: #f7f7f7;
   border-color: #BDC4C9;
-  font-weight: 600;
+  font-weight: 700;
   padding-left: 17px;
   padding-right: 17px
 }
@@ -2955,7 +2955,7 @@ input,select {
   background: none;
   padding: 0;
   margin: 0;
-  font-weight: 600
+  font-weight: 700
 }
 
 .breadcrumb .active {
@@ -2975,7 +2975,7 @@ input,select {
   text-transform: uppercase;
   font-size: 10px;
   padding-left: 15px;
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   padding-top: 5px
 }
 
@@ -3262,7 +3262,7 @@ div[data-role="editor-toolbar"] {
 }
 
 .panel-title {
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   color: #58666e;
   font-size: 13px;
   font-weight: bold;
@@ -3290,7 +3290,7 @@ div[data-role="editor-toolbar"] {
 
 .panel .badge {
   font-size: 11px;
-  font-family: 'Roboto',sans-serif;
+  font-family: 'Open Sans',sans-serif;
   text-transform: none;
   padding: 4px 10px;
   margin-left: 5px;
@@ -3575,12 +3575,12 @@ div[data-role="editor-toolbar"] {
 }
 
 .panel-tools {
-  font-family: 'Roboto',sans-serif;
+  font-family: 'Open Sans',sans-serif;
   position: absolute;
   right: 16px;
   top: 13px;
   text-transform: none;
-  font-weight: 600;
+  font-weight: 700;
   font-size: inherit;
   z-index: 1
 }
@@ -3684,12 +3684,12 @@ div[data-role="editor-toolbar"] {
 }
 
 .widget-tools {
-  font-family: 'Roboto',sans-serif;
+  font-family: 'Open Sans',sans-serif;
   position: absolute;
   right: 15px;
   top: 13px;
   text-transform: none;
-  font-weight: 600;
+  font-weight: 700;
   font-size: inherit;
   z-index: 1
 }
@@ -3781,7 +3781,7 @@ div[data-role="editor-toolbar"] {
 }
 
 .modal-title {
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   font-size: 16px
 }
 
@@ -3818,7 +3818,7 @@ div[data-role="editor-toolbar"] {
 .progress-bar {
   background: #399bff;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal
 }
 
@@ -3864,8 +3864,8 @@ div[data-role="editor-toolbar"] {
 }
 
 thead {
-  font-weight: 600;
-  font-family: 'Montserrat',sans-serif;
+  font-weight: 700;
+  font-family: 'Lato',sans-serif;
   text-transform: uppercase;
   font-size: 12px;
   color: #37363e
@@ -3954,7 +3954,7 @@ table td {
 }
 
 .widget .widget-title h2 {
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   font-size: 12px;
   margin: 0;
   font-weight: bold;
@@ -3978,8 +3978,8 @@ table td {
   font-size: 18px;
   display: block;
   color: inherit;
-  font-family: 'Montserrat',sans-serif;
-  font-weight: 600
+  font-family: 'Lato',sans-serif;
+  font-weight: 700
 }
 
 .widget-inline-list .chart {
@@ -4050,7 +4050,7 @@ table td {
 }
 
 .chart-with-stats .top-label h2 {
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   margin: 0;
   font-weight: bold;
   color: #37363e;
@@ -4065,7 +4065,7 @@ table td {
 }
 
 .chart-with-stats .title {
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Lato',sans-serif;
   color: #58666e;
   font-weight: bold;
   position: absolute;
@@ -4079,7 +4079,7 @@ table td {
 
 .chart-with-stats .title small {
   display: block;
-  font-family: 'Roboto',sans-serif;
+  font-family: 'Open Sans',sans-serif;
   font-size: 12px;
   margin-top: 4px
 }
@@ -4217,7 +4217,7 @@ table td {
   right: 0;
   display: inline-block;
   padding: 3px 6px;
-  font-weight: 600
+  font-weight: 700
 }
 
 .image-list li {
@@ -4296,7 +4296,7 @@ table td {
 .blog-post .author span {
   display: block;
   color: #37363e;
-  font-weight: 600
+  font-weight: 700
 }
 
 .quick-menu {
@@ -4304,7 +4304,7 @@ table td {
   background: #fff;
   margin-bottom: 10px;
   border-radius: 3px;
-  font-family: 'Montserrat',sans-serif
+  font-family: 'Lato',sans-serif
 }
 
 .quick-menu .label {
