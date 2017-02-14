@@ -446,7 +446,7 @@ b,strong {
   left: 0;
   bottom: 0;
   font-family: 'Montserrat',sans-serif;
-  background: #3d464d;
+  background: #2d343a;
   z-index: 0;
   font-size: 13px;
   font-weight: normal;
@@ -504,7 +504,7 @@ b,strong {
 
 .sidebar-panel li a:hover,.sidebar-panel li a.active {
   color: #f2f2f2;
-  background: rgba(0,0,0,0.2)
+  background: rgba(231,76,60,1)
 }
 
 .sidebar-panel li a:hover .icon,.sidebar-panel li a.active .icon {
@@ -2465,12 +2465,12 @@ dt,dd {
 }
 
 .btn-primary {
-  background-color: #33577b;
+  background-color: #e74c3c;
   color: #fff
 }
 
 .btn-primary:hover,.btn-primary:focus,.btn-primary.focus,.btn-primary:active,.btn-primary.active,.open>.dropdown-toggle.btn-primary {
-  background-color: #396189;
+  background-color: #cc3d2e;
   color: #fff
 }
 
@@ -3885,6 +3885,14 @@ table td {
   padding: 15px;
   line-height: 1.7;
   vertical-align: middle;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+  border-top: 1px solid #eee;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+  padding: 5px 15px;
 }
 
 .table>tbody tr td .checkbox {
