@@ -1,11 +1,11 @@
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START page-container -->
-<div id="page-container" [ngClass]="{ 'menu-open': menuVisible }" *ngIf="auth.authenticated()">
+<div id="page-container" [ngClass]="{ 'menu-open': menuVisible }">
 
   <!-- //////////////////////////////////////////////////////////////////////////// -->
   <!-- START SIDEBAR -->
   <span class="icon menu-icon" (click)="menuClicked()"><i class="fa fa-bars"></i></span>
-  <div class="sidebar clearfix">
+  <div class="sidebar clearfix" *ngIf="auth.authenticated()">
 
     <ul class="sidebar-panel nav">
       <li class="sidetitle">MENU</li>
