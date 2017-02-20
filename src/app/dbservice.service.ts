@@ -3,18 +3,20 @@ import { Response, Request, RequestOptions, Headers } from '@angular/http';
 import { tokenNotExpired, AuthHttp } from 'angular2-jwt';
 import { Device } from './device';
 import { Data } from './data';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class DbService {
 
   constructor(public authHttp: AuthHttp) { }
+  
 
   createDevice(name, description): Promise<any> {
     let device = JSON.stringify({ "deviceName": name, "description": description });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers, method: "post" });
 
-    return this.authHttp.post("http://localhost:3000/api/devices/create", device, options)
+    return this.authHttp.post(environment.url + "/api/devices/create" + , device, options)
 
       .toPromise()
       .then(this.extractData)
@@ -24,7 +26,7 @@ export class DbService {
   }
 
   getDevices(): Promise<Device[]> {
-    return this.authHttp.get("http://localhost:3000/api/devices/find")
+    return this.authHttp.get(environment.url + "/api/devices/find")
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
@@ -36,7 +38,7 @@ export class DbService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers, method: "post" });
 
-    return this.authHttp.post("http://localhost:3000/api/devices/update", device, options)
+    return this.authHttp.post(environment.url + "/api/devices/update", device, options)
 
       .toPromise()
       .then(this.extractData)
@@ -50,14 +52,14 @@ export class DbService {
   }
 
   getAllData(): Promise<Data[]> {
-    return this.authHttp.get("http://localhost:3000/api/data/findbyuser")
+    return this.authHttp.get(environment.url + "/api/data/findbyuser")
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
   }
 
   getDeviceData(): Promise<Data[]> {
-    return this.authHttp.get("http://localhost:300/api/data/findbydevice")
+    return this.authHttp.get(environment.url + "/api/data/findbydevice")
     .toPromise()
     .then(this.extractData)
     .catch(this.handleError);
@@ -83,7 +85,7 @@ export class DbService {
     let body = JSON.stringify({ "deviceId": "d956ffdb-f67a-409f-99ee-54af7e6e4c7b", "data": { "temp": temp, "humidity": humidity } });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers, method: "post" });
-    return this.authHttp.post("http://localhost:3000/api/data/add", body, options)
+    return this.authHttp.post(environment.url + "/api/data/add", body, options)
       .toPromise()
       .then(function (res) {
         return res.status;
