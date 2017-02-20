@@ -16,7 +16,7 @@ export class DbService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers, method: "post" });
 
-    return this.authHttp.post(environment.url + "/api/devices/create" + , device, options)
+    return this.authHttp.post(environment.url + "/api/devices/create", device, options)
 
       .toPromise()
       .then(this.extractData)

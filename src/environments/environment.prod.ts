@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url: "http://e-nilsson.se"
+  url: "http://www.e-nilsson.se"
 };
