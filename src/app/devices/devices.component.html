@@ -37,7 +37,7 @@
             <td>{{ device.device_name }}</td>
             <td>
               <div class="clipboard-container">
-                <div class="clipboard-icon"><button class="btn btn-light btn-icon"><i class="fa fa-clipboard"></i></button></div>
+                <div class="clipboard-icon"><button class="btn btn-primary btn-icon"><i class="fa fa-clipboard"></i></button></div>
                 {{ device.id }}
               </div>
              
@@ -45,7 +45,7 @@
             <td>{{ device.description }}</td>
             <td>{{ device.updatedAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
             <td>{{ device.createdAt | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-            <td> <button class="btn btn-light btn-icon" data-toggle="modal" data-target="#editDevice" (click)="editDevice(device.id, device.device_name, device.description)"><i class="fa fa-edit"></i></button></td>
+            <td> <button class="btn btn-primary btn-icon" data-toggle="modal" data-target="#editDevice" (click)="editDevice(device.id, device.device_name, device.description)"><i class="fa fa-edit"></i></button></td>
           </tr>
         </tbody>
       </table>
@@ -67,12 +67,10 @@
           <div class="form-group">
             <label for="input1" class="form-label">Name</label>
             <input class="form-control" required [(ngModel)]="name" type="text" name="name">
-            <p>{{name}}</p>
           </div>
           <div class="form-group">
             <label class="form-label">Description</label>
             <input class="form-control" required [(ngModel)]="desc" name="description">
-            <p>{{desc}}</p>
           </div>
         </div>
         <div class="modal-footer">

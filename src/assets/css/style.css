@@ -139,8 +139,12 @@ html, body, div.content {
 }
 
 body {
-  background: #f5f5f5;
-  color: #58666e;
+  /*background: #f5f5f5;*/
+  background-image:    url(../img/bg-joemini.png);
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center; 
+  color: #fafafa;
   margin: 0;
   line-height: 1.7em;
   font-size: 13px;
@@ -158,7 +162,7 @@ body {
 }
 
 a {
-  color: #399bff;
+  color: #ef4836;
   text-decoration: none
 }
 
@@ -249,6 +253,15 @@ b,strong {
   font-size: 30px;
   font-weight: bold;
   font-family: 'Lato',sans-serif
+}
+
+.sidebar-line {
+  position: absolute;
+  top: 90px;
+  right: 0;
+  bottom: 42px;
+  width: 1px;
+  background: rgba(0,0,0,0.35);
 }
 
 .sidebar-open-button {
@@ -446,13 +459,13 @@ b,strong {
   left: 0;
   bottom: 0;
   font-family: 'Lato',sans-serif;
-  background: #2d343a;
+  background: rgba(0,0,0,0.25);
   z-index: 0;
   font-size: 13px;
   font-weight: normal;
   min-height: 800px;
   z-index: 500;
-  color: rgba(255,255,255,0.8)
+  color: rgba(255,255,255,0.8);
 }
 
 .sidebar .label {
@@ -878,22 +891,20 @@ b,strong {
   padding-right: 30px;
   padding-top: 20px;
   margin-left: 125px;
-  background: #f5f5f5;
   position: relative;
 }
 
 .footer {
-  border-top: 1px solid #e2e2e2;
   padding: 10px;
   margin: 0;
   font-size: 11px;
-  color: #666;
-  background: rgba(0,0,0,0.02);
+  color: rgba(255,255,255,0.6);
+  background: rgba(0,0,0,0.25);
   position: fixed;
   bottom: 0;
   left: 125px;
   right: 0;
-  background: #f5f5f5;
+  border-top: 1px solid rgba(0,0,0,0.35);
 }
 
 .footer .col-md-6 {
@@ -901,10 +912,10 @@ b,strong {
 }
 
 .page-header {
-  background: #fff;
+  background: rgba(0,0,0,0.25);
   margin: -20px -30px 20px -30px;
   padding: 20px;
-  border-bottom: none;
+  border-bottom: 1px solid rgba(0,0,0,0.35);
   position: relative
 }
 
@@ -915,7 +926,7 @@ b,strong {
   font-size: 20px;
   line-height: normal;
   font-weight: normal;
-  color: #37363e;
+  color: #fff;
   padding-bottom: 6px
 }
 
@@ -2266,8 +2277,13 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
   font-family: inherit;
   font-weight: 400;
   line-height: 1.6;
-  color: #37363e
+  color: #f5f5f5
 }
+/*
+.modal h1,.modal h2,.modal h3,.modal h4,.modal h5,.modal h6,.modal .h1,.modal .h2,.modal .h3,.modal .h4,.modal .h5,.modal .h6 {
+  color: #fff
+}
+*/
 
 h1,.h1,h2,.h2,h3,.h3 {
   margin-top: 20px;
@@ -2475,7 +2491,7 @@ dt,dd {
 }
 
 .btn-primary:active,.btn-primary.active,.open>.dropdown-toggle.btn-primary {
-  background: #2c4a69;
+  background: #bd2f21;
   box-shadow: none;
   color: #fff
 }
@@ -2732,6 +2748,19 @@ dt,dd {
 .btn-option5 .badge {
   color: #e99844;
   background-color: #fff
+}
+
+.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active {
+    background-color: #c1463a;
+    border-color: #b1392d;
+}
+
+.modal .btn:not(.btn-primary) {
+  background-color: #777;
+}
+
+.modal .btn:not(.btn-primary):hover {
+  color: #ccc;
 }
 
 .label {
@@ -3232,8 +3261,9 @@ div[data-role="editor-toolbar"] {
 
 .panel {
   box-shadow: none;
-  border: 1px solid #e5e5e5;
-  background: #fff;
+  border: 1px solid rgba(0,0,0,0.25);
+  background: rgba(0,0,0,0.25);
+  color: rgba(255,255,255,0.6);
   padding: 20px;
   margin-bottom: 20px;
   position: relative
@@ -3769,10 +3799,10 @@ div[data-role="editor-toolbar"] {
   width: 26px;
   border-radius: 4px;
   font-size: 23px;
-  background: #ccc;
-  color: #000;
+  background: #777;
+  color: #fafafa;
   text-shadow: none;
-  opacity: 0.4;
+  opacity: 1;
   outline: 0
 }
 
@@ -3807,6 +3837,25 @@ div[data-role="editor-toolbar"] {
 
 .modalicon:hover {
   border-color: #ccc
+}
+
+.modal-header {
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.modal-content {
+    box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.75);
+    background: #121212;
+    border: 3px solid #333;
+}
+
+.modal-backdrop.in {
+    filter: alpha(opacity=65);
+    opacity: .65;
 }
 
 .progress {
@@ -3859,8 +3908,16 @@ div[data-role="editor-toolbar"] {
   margin: 0
 }
 
+.table-striped > tbody > tr {
+  background-color: rgba(0,0,0,0.1);
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: rgba(0,0,0,0.25);
+}
+
 .table-hover>tbody>tr:hover {
-  background-color: #EFF7FF
+  background-color: rgba(0,0,0,0.35);
 }
 
 thead {
@@ -3868,7 +3925,6 @@ thead {
   font-family: 'Lato',sans-serif;
   text-transform: uppercase;
   font-size: 12px;
-  color: #37363e
 }
 
 thead .fa {
@@ -3888,7 +3944,7 @@ table td {
 }
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
-  border-top: 1px solid #eee;
+  border-top: 1px solid rgba(0,0,0,0.35);
 }
 
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
