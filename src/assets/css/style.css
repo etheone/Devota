@@ -515,9 +515,16 @@ b,strong {
   padding-top: 1px
 }
 
+.sidebar-panel li a:hover,.sidebar-panel li a {
+  border-right: 1px solid rgba(0,0,0,0);
+  border-bottom: 1px solid rgba(0,0,0,0);
+}
+
 .sidebar-panel li a:hover,.sidebar-panel li a.active {
   color: #f2f2f2;
-  background: rgba(231,76,60,1)
+  background: rgba(231,76,60,1);
+  border-right: 1px solid rgba(0,0,0,0.75);
+  border-bottom: 1px solid rgba(0,0,0,0.75);
 }
 
 .sidebar-panel li a:hover .icon,.sidebar-panel li a.active .icon {
