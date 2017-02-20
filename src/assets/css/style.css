@@ -923,7 +923,8 @@ b,strong {
   margin: -20px -30px 20px -30px;
   padding: 20px;
   border-bottom: 1px solid rgba(0,0,0,0.35);
-  position: relative
+  position: relative;
+  height: 91px;
 }
 
 .page-header .title {
