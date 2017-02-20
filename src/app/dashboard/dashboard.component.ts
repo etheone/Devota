@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthHttp } from 'angular2-jwt';
-
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
