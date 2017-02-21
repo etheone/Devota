@@ -142,7 +142,8 @@ router.post('/data/add', (req, res) => {
 
     router.post('/data/addreal', (req, res) => {
     //To be implemented - Add data
-    var body = req.body;
+    var body = JSON.parse(req.body);
+    
     var deviceId = body.deviceId;
     delete body["deviceId"];
     //var userId = getUserId(req);
