@@ -140,6 +140,67 @@ router.post('/data/add', (req, res) => {
         }
     });
 
+    router.post('/data/addreal', (req, res) => {
+    //To be implemented - Add data
+    var body = req.body;
+    var deviceId = body.deviceId;
+    delete body["deviceId"];
+    //var userId = getUserId(req);
+    models.Device.find(deviceId, null).then(device => {
+        if (device != null) {
+            //console.log(devices);
+            //var count = devices.length;
+            //var deviceNr = Math.floor((Math.random() * (count + 1)));
+            //console.log("Device # in /data/add: " + deviceNr);
+            //deviceId = devices[deviceNr].id;
+            //console.log("DeviceID in /data/add: " + deviceId);
+            models.Device.find(deviceId, null).then(device => {
+                var data = JSON.stringify(body.data);
+                if (device != null) {
+
+                    models.Data.add(deviceId, data).then(data => {
+                        if (data != null) {
+                            console.log("Successfully added data!");
+                            res.sendStatus(200);
+                        } else {
+
+                            /////
+                            ///// ADD APPROPERIATE STATUS CODE
+                            /////
+                            res.sendStatus(400);
+                        }
+                    });
+
+                } else {
+
+                    res.sendStatus(400);
+                }
+            });
+        } else {
+            res.sendStatus(400);
+        }
+    });
+
+
+
+    /*  if (checkDeviceId(deviceId)) {
+          console.log("IN HERE");
+          models.Data.add(body.deviceId, body.data).then(data => {
+              if (data != null) {
+                  res.sendStatus(200);
+              } else {
+  
+                  /////
+                  ///// ADD APPROPERIATE STATUS CODE
+                  /////
+                  res.sendStatus(400);
+              }
+          });
+      } else {
+          console.log("Not in there");
+  }*/
+});
+
 
 
     /*  if (checkDeviceId(deviceId)) {
