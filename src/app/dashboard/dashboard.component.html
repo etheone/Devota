@@ -42,9 +42,28 @@
 
   <div class="col-md-6">
     <div class="panel">
-      <h2 class="m0">
-        Getting started
-      </h2>
+      <h2 class="m0">Getting started</h2>
+      <br>
+      <article class="expandable" [class.open]="faqOpen[0]" >
+        <h4 (click)="faqClicked(0)">Adding a new device</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel elementum diam. Aliquam erat volutpat. Vivamus
+          porttitor arcu sed sodales convallis. Duis lacinia dui massa, nec faucibus dui vehicula sed. Donec efficitur interdum ligula eu fringilla. In tempor id mi in euismod. Vestibulum sed mollis diam.</p>
+      </article>
+      <article class="expandable" [class.open]="faqOpen[1]" >
+        <h4 (click)="faqClicked(1)">Editing your existing device</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel elementum diam. Aliquam erat volutpat. Vivamus
+          porttitor arcu sed sodales convallis. Duis lacinia dui massa, nec faucibus dui vehicula sed. Donec efficitur interdum ligula eu fringilla. In tempor id mi in euismod. Vestibulum sed mollis diam.</p>
+      </article>
+      <article class="expandable" [class.open]="faqOpen[2]" >
+        <h4 (click)="faqClicked(2)">Removing a device</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel elementum diam. Aliquam erat volutpat. Vivamus
+          porttitor arcu sed sodales convallis. Duis lacinia dui massa, nec faucibus dui vehicula sed. Donec efficitur interdum ligula eu fringilla. In tempor id mi in euismod. Vestibulum sed mollis diam.</p>
+      </article>
+      <article class="expandable" [class.open]="faqOpen[3]" >
+        <h4 (click)="faqClicked(3)">Accessing your data</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel elementum diam. Aliquam erat volutpat. Vivamus
+          porttitor arcu sed sodales convallis. Duis lacinia dui massa, nec faucibus dui vehicula sed. Donec efficitur interdum ligula eu fringilla. In tempor id mi in euismod. Vestibulum sed mollis diam.</p>
+      </article>
     </div>
   </div>
 </div>

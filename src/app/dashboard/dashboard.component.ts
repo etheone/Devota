@@ -10,6 +10,11 @@ import { AuthService } from '../auth.service';
   providers: [AuthService]
 })
 export class DashboardComponent implements OnInit {
+  faqOpen = [];
+  
+  faqClicked(i) {
+    this.faqOpen[i] = !this.faqOpen[i];
+  }
 
   constructor(private auth: AuthService) { }
 
