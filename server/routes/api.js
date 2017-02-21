@@ -102,6 +102,7 @@ router.get('/devices/remove', (req, res) => {
 
 router.post('/data/add', (req, res) => {
     //To be implemented - Add data
+	//console.log(req);
     var body = req.body;
     var deviceId;
     var userId = getUserId(req);
@@ -164,7 +165,11 @@ router.post('/data/add', (req, res) => {
 
 router.post('/data/addreal', (req, res) => {
     //To be implemented - Add data
-    var body = JSON.parse(req.body);
+	//	console.log(req);
+	//console.log("HEJ");
+	//console.log(req.body);
+    var body = req.body;
+console.log(body);
 
     var deviceId = body.deviceId;
     delete body["deviceId"];
