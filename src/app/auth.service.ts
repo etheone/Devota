@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Response, Request } from '@angular/http';
 import { tokenNotExpired, AuthHttp } from 'angular2-jwt';
 import 'rxjs/add/operator/toPromise';
+import { environment } from '../environments/environment';
 
 // Avoid name not found warnings
 declare var Auth0Lock: any;
@@ -67,7 +68,7 @@ export class AuthService {
   private loginToBackend(): Promise<any> {
 
     var that = this;
-    return this.authHttp.get("http://localhost:3000/api/authenticate")
+    return this.authHttp.get(environment.url + "/api/authenticate")
 
 
       .toPromise()
