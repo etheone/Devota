@@ -140,10 +140,32 @@ router.post('/data/add', (req, res) => {
         }
     });
 
-    router.post('/data/addreal', (req, res) => {
+
+
+
+
+    /*  if (checkDeviceId(deviceId)) {
+          console.log("IN HERE");
+          models.Data.add(body.deviceId, body.data).then(data => {
+              if (data != null) {
+                  res.sendStatus(200);
+              } else {
+  
+                  /////
+                  ///// ADD APPROPERIATE STATUS CODE
+                  /////
+                  res.sendStatus(400);
+              }
+          });
+      } else {
+          console.log("Not in there");
+  }*/
+});
+
+router.post('/data/addreal', (req, res) => {
     //To be implemented - Add data
     var body = JSON.parse(req.body);
-    
+
     var deviceId = body.deviceId;
     delete body["deviceId"];
     //var userId = getUserId(req);
@@ -181,26 +203,6 @@ router.post('/data/add', (req, res) => {
             res.sendStatus(400);
         }
     });
-
-
-
-    /*  if (checkDeviceId(deviceId)) {
-          console.log("IN HERE");
-          models.Data.add(body.deviceId, body.data).then(data => {
-              if (data != null) {
-                  res.sendStatus(200);
-              } else {
-  
-                  /////
-                  ///// ADD APPROPERIATE STATUS CODE
-                  /////
-                  res.sendStatus(400);
-              }
-          });
-      } else {
-          console.log("Not in there");
-  }*/
-});
 
 
 
