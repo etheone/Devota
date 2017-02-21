@@ -35,10 +35,49 @@ router.get('/authenticate', (req, res) => {
         res.sendStatus(401).send('Unauthorized');
     }
 
-
-
 });
 
+router.get('/news/find', (req, res) => {
+    if (checkAuthorization(req)) {
+        models.News.find().then(news => {
+            res.status(200).send(JSON.stringify(news));
+        });
+    } else {
+        res.sendStatus(401).send('Unauthorized');
+    }
+});
+
+router.post('/news/create', (req, res) => {
+    var news = req.body;
+    if (checkAuthorization(req)) {
+        models.News.add(news.title, news.description, news.date).then(news => {
+            res.status(200).send(JSON.stringify(news));
+        })
+    } else {
+        res.sendStatus(401).send('Unauthorized');
+    }
+});
+
+router.get('/quickstart/find', (req, res) => {
+    if (checkAuthorization(req)) {
+        models.Quickstart.find().then(quickstart => {
+            res.status(200).send(JSON.stringify(quickstart));
+        });
+    } else {
+        res.sendStatus(401).send('Unauthorized');
+    }
+});
+
+router.post('/quickstart/create', (req, res) => {
+    var quickstart = req.body;
+    if (checkAuthorization(req)) {
+        models.Quickstart.add(quickstart.title, quickstart.description).then(quickstart => {
+            res.status(200).send(JSON.stringify(quickstart));
+        })
+    } else {
+        res.sendStatus(401).send('Unauthorized');
+    }
+});
 
 router.post('/devices/create', (req, res) => {
     console.log("req.body in /devices/create");
@@ -102,7 +141,7 @@ router.get('/devices/remove', (req, res) => {
 
 router.post('/data/add', (req, res) => {
     //To be implemented - Add data
-	//console.log(req);
+    //console.log(req);
     var body = req.body;
     var deviceId;
     var userId = getUserId(req);
@@ -165,11 +204,11 @@ router.post('/data/add', (req, res) => {
 
 router.post('/data/addreal', (req, res) => {
     //To be implemented - Add data
-	//	console.log(req);
-	//console.log("HEJ");
-	//console.log(req.body);
+    //	console.log(req);
+    //console.log("HEJ");
+    //console.log(req.body);
     var body = req.body;
-console.log(body);
+    console.log(body);
 
     var deviceId = body.deviceId;
     delete body["deviceId"];

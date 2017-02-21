@@ -3,6 +3,8 @@ import { Response, Request, RequestOptions, Headers } from '@angular/http';
 import { tokenNotExpired, AuthHttp } from 'angular2-jwt';
 import { Device } from './device';
 import { Data } from './data';
+import { News } from './news';
+import { Quickstart } from './quickstart';
 import { environment } from '../environments/environment';
 
 @Injectable()
@@ -10,6 +12,19 @@ export class DbService {
 
   constructor(public authHttp: AuthHttp) { }
   
+  getNews(): Promise<News[]> {
+    return this.authHttp.get(environment.url + "/api/news/find")
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getQuickstart(): Promise<Quickstart[]> {
+    return this.authHttp.get(environment.url + "/api/quickstart/find")
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
+  }
 
   createDevice(name, description): Promise<any> {
     let device = JSON.stringify({ "deviceName": name, "description": description });

@@ -18,24 +18,11 @@
     <div class="panel">
       <h2 class="m0">News</h2>
       <br>
-      <article>
-        <h6>2017-02-01</h6>
-        <h4>We're recruting</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel elementum diam. Aliquam erat volutpat. Vivamus
-          porttitor arcu sed sodales convallis. Duis lacinia dui massa, nec faucibus dui vehicula sed. Donec efficitur interdum ligula eu fringilla. In tempor id mi in euismod. Vestibulum sed mollis diam.</p>
-        <a href="#">Read more</a>
-      </article>
-      <article>
-        <h6>2017-01-27</h6>
-        <h4>Booh-ya!</h4>
-        <p>Mauris iaculis maximus leo, vitae lobortis eros ullamcorper ac. Duis cursus urna nec dignissim feugiat. Phasellus quis varius tortor. Nunc cursus non nulla a faucibus. Nam hendrerit ultrices turpis at laoreet. Vestibulum sed massa sed libero porta luctus quis id neque. Aliquam sapien lorem, placerat ut odio vitae, hendrerit facilisis tellus.</p>
-        <a href="#">Read more</a>
-      </article>
-      <article>
-        <h6>2017-01-14</h6>
-        <h4>2017 - Entering a new era</h4>
-        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras lacus elit, interdum et mollis a, varius eu ante. Maecenas posuere maximus tempus. Vestibulum ac congue neque, in lobortis mi. Phasellus quis tincidunt dolor, non molestie erat. Curabitur ac nibh nec magna consequat mattis vel in magna. Donec sit amet porttitor nunc, vel euismod sapien.</p>
-        <a href="#">Read more</a>
+      <article *ngFor="let i of newsContent; let i = index">
+        <h6>{{newsContent[i].date}}</h6>
+        <h4>{{newsContent[i].title}}</h4>
+        <p>{{newsContent[i].description}}</p>
+        <a href="#{{newsContent[i].id}}">Läs mer</a>
       </article>
     </div>
   </div>
@@ -44,25 +31,9 @@
     <div class="panel">
       <h2 class="m0">Getting started</h2>
       <br>
-      <article class="expandable" [class.open]="faqOpen[0]" >
-        <h4 (click)="faqClicked(0)">Adding a new device</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel elementum diam. Aliquam erat volutpat. Vivamus
-          porttitor arcu sed sodales convallis. Duis lacinia dui massa, nec faucibus dui vehicula sed. Donec efficitur interdum ligula eu fringilla. In tempor id mi in euismod. Vestibulum sed mollis diam.</p>
-      </article>
-      <article class="expandable" [class.open]="faqOpen[1]" >
-        <h4 (click)="faqClicked(1)">Editing your existing device</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel elementum diam. Aliquam erat volutpat. Vivamus
-          porttitor arcu sed sodales convallis. Duis lacinia dui massa, nec faucibus dui vehicula sed. Donec efficitur interdum ligula eu fringilla. In tempor id mi in euismod. Vestibulum sed mollis diam.</p>
-      </article>
-      <article class="expandable" [class.open]="faqOpen[2]" >
-        <h4 (click)="faqClicked(2)">Removing a device</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel elementum diam. Aliquam erat volutpat. Vivamus
-          porttitor arcu sed sodales convallis. Duis lacinia dui massa, nec faucibus dui vehicula sed. Donec efficitur interdum ligula eu fringilla. In tempor id mi in euismod. Vestibulum sed mollis diam.</p>
-      </article>
-      <article class="expandable" [class.open]="faqOpen[3]" >
-        <h4 (click)="faqClicked(3)">Accessing your data</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel elementum diam. Aliquam erat volutpat. Vivamus
-          porttitor arcu sed sodales convallis. Duis lacinia dui massa, nec faucibus dui vehicula sed. Donec efficitur interdum ligula eu fringilla. In tempor id mi in euismod. Vestibulum sed mollis diam.</p>
+      <article *ngFor="let i of faqContent; let i = index" class="expandable" [class.open]="faqOpen[i]">
+        <h4 (click)="faqClicked(i)">{{faqContent[i].title}}</h4>
+        <p>{{faqContent[i].description}}</p>
       </article>
     </div>
   </div>
