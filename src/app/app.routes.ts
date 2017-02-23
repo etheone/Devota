@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DevicesComponent } from './devices/devices.component';
 import { DataComponent } from './data/data.component';
 import { IdeComponent } from './ide/ide.component';
+import { GuidesComponent } from './guides/guides.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './common/auth.guard';
@@ -40,6 +41,11 @@ export const routes: Routes = [
   {
     path: 'ide',
     component: IdeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'guides',
+    component: GuidesComponent,
     canActivate: [AuthGuard]
   },
   {

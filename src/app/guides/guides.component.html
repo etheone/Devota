@@ -1,0 +1,38 @@
+<!-- Start Page Header -->
+<div class="page-header">
+  <h1 class="title">Guides</h1>
+  <ol class="breadcrumb">
+    <li class="active">This is a quick overview of some features</li>
+  </ol>
+
+  <!-- Start Page Header Right Div -->
+  <div class="right">
+
+  </div>
+  <!-- End Page Header Right Div -->
+
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel">
+      <h2 class="m0">Getting started</h2>
+      <br>
+      <article *ngFor="let i of faqContent; let i = index" class="expandable" [class.open]="faqOpen[i]">
+        <h4 (click)="faqClicked(i)">{{faqContent[i].title}}</h4>
+        <p>{{faqContent[i].description}}</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="panel">
+      <h2 class="m0">Advanced</h2>
+      <br>
+      <article *ngFor="let i of faqContent; let i = index" class="expandable" [class.open]="faqOpen[i]">
+        <h4 (click)="faqClicked(i)">{{faqContent[i].title}}</h4>
+        <p>{{faqContent[i].description}}</p>
+      </article>
+    </div>
+  </div>
+</div>
