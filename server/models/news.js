@@ -39,7 +39,7 @@ module.exports = function (sequelize, DataTypes) {
                     });
                 },
                 find: function () {
-                    return News.findAll().then(function (news) {
+                    return News.findAll({order: 'date DESC'}).then(function (news) {
                         return news;
                     }).catch(function (error) {
                         console.log(error);
