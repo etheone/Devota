@@ -3,14 +3,24 @@ import { Device } from './device';
 @Pipe({ name: 'orderBy', pure: false })
 
 export class DeviceOrderByPipe implements PipeTransform {
-  transform(array: Array<Device>, args: string): Array<Device> {
+  transform(array: Array<any>, arg1: string, arg2: boolean): Array<any> {
     array.sort((a: any, b: any) => {
-      if (a.updatedAt < b.updatedAt) {
-        return 1;
-      } else if (a.updatedAt > b.updatedAt) {
-        return -1;
+      if (arg2) {
+        if (a[arg1] > b[arg1]) {
+          return 1;
+        } else if (a[arg1] < b[arg1]) {
+          return -1;
+        } else {
+          return 0;
+        }
       } else {
-        return 0;
+        if (a[arg1] < b[arg1]) {
+          return 1;
+        } else if (a[arg1] > b[arg1]) {
+          return -1;
+        } else {
+          return 0;
+        }
       }
     });
     return array;

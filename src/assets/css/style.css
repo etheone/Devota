@@ -4497,3 +4497,7 @@ table td {
 .m0 {
   margin: 0;
 }
+
+.pointer {
+  cursor: pointer;
+}

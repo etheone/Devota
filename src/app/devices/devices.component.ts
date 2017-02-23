@@ -14,16 +14,25 @@ export class DevicesComponent implements OnInit {
   name: string = "";
   desc: string = "";
 
+  order: boolean = true;
+  sortBy: string = "updatedAt";
+
   editingId: string = "";
   modalName: string = "";
   modalDescription: string = "";
 
   constructor(private auth: AuthService, private dbService: DbService) { }
 
+  sortDevices(arg) {
+    if (this.sortBy == arg) {
+      this.order = !this.order;
+    } else {
+      this.sortBy = arg;
+    }
+  }
+
   createDevice(name, desc) {
     this.dbService.createDevice(name, desc).then((device) => {
-      //console.log("Response from /devices/create:");
-      //console.log(res);
       console.log("Here");
       console.log(this.devices.length);
       if (this.devices.length < 2) {
@@ -56,7 +65,7 @@ export class DevicesComponent implements OnInit {
       this.fieldsOk = false;
     });
 
- 
+
   }
 
   editDevice(id, name, desc) {

@@ -21,16 +21,16 @@
         <thead>
           <tr>
             <td><i class="fa fa-trash"></i></td>
-            <td>Name</td>
-            <td>Device ID</td>
-            <td>Description</td>
-            <td>Updated</td>
-            <td>Added</td>
+            <td class="pointer" (click)="sortDevices('device_name')">Name</td>
+            <td class="pointer" (click)="sortDevices('id')">Device ID</td>
+            <td class="pointer" (click)="sortDevices('description')">Description</td>
+            <td class="pointer" (click)="sortDevices('updatedAt')">Updated</td>
+            <td class="pointer" (click)="sortDevices('createdAt')">Added</td>
             <td>Edit</td>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let device of devices | orderBy; let i = index;">
+          <tr *ngFor="let device of devices | orderBy: sortBy:order; let i = index;">
             <td class="text-center">
               <div class="checkbox margin-t-0"><input id="checkbox{{i}}" type="checkbox"><label for="checkbox{{i}}"></label></div>
             </td>

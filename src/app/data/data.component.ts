@@ -10,6 +10,8 @@ import { Data } from '../data';
 })
 export class DataComponent implements OnInit {
   dataArray = [];
+  sortBy: string = "createdAt";
+  order: boolean = false;
 
   constructor(private auth: AuthService, private dbService: DbService) { }
 
@@ -22,6 +24,14 @@ export class DataComponent implements OnInit {
         alert("Adding data didn't really go your way");
       }
     });
+  }
+
+  sortData(arg) {
+    if (this.sortBy == arg) {
+      this.order = !this.order;
+    } else {
+      this.sortBy = arg;
+    }
   }
 
   getData() {

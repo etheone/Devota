@@ -22,13 +22,13 @@
         <thead>
           <tr>
             <td><i class="fa fa-trash"></i></td>
-            <td>Device</td>
-            <td>Data</td>
-            <td>Recieved</td>
+            <td class="pointer" (click)="sortData('device_name')">Device</td>
+            <td class="pointer" (click)="sortData('data')">Data</td>
+            <td class="pointer" (click)="sortData('createdAt')">Recieved</td>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let data of dataArray">
+          <tr *ngFor="let data of dataArray | orderBy: sortBy:order; let i = index">
             <td class="text-center">
               <div class="checkbox margin-t-0"><input id="checkbox{{i}}" type="checkbox"><label for="checkbox{{i}}"></label></div>
             </td>
