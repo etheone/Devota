@@ -12,6 +12,9 @@ export class DataComponent implements OnInit {
   dataArray = [];
   sortBy: string = "createdAt";
   order: boolean = false;
+  alwaysTrue: boolean = true;
+
+  selectedDevice: string = "";
 
   constructor(private auth: AuthService, private dbService: DbService) { }
 
@@ -24,6 +27,12 @@ export class DataComponent implements OnInit {
         alert("Adding data didn't really go your way");
       }
     });
+  }
+
+  selectDevice(deviceId) {
+    this.selectedDevice = deviceId;
+    console.log("in select device");
+    console.log(this.selectedDevice);
   }
 
   sortData(arg) {
