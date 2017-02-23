@@ -9,7 +9,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 export class IdeComponent {
   @ViewChild('editor') editor;
   text: string = ``;
-  innerHate: number;
+  innerHeight: number;
   @ViewChild('windowSize') bodyEl: ElementRef;
 
   constructor() {
@@ -36,12 +36,12 @@ export class IdeComponent {
 
       }
     });
-    this.innerHate = this.bodyEl.nativeElement.offsetHeight;
+    this.innerHeight = this.bodyEl.nativeElement.offsetHeight;
 
   }
 
   onResize(event) {
-    this.innerHate = this.bodyEl.nativeElement.offsetHeight;
+    this.innerHeight = this.bodyEl.nativeElement.offsetHeight;
   }
 
 

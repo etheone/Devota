@@ -1,3 +1,4 @@
+<div (window:resize)="onResize($event)" id="bodySize" #bodySize></div>
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 <!-- START page-container -->
 <div id="page-container" [ngClass]="{ 'menu-open': menuVisible }">
@@ -9,48 +10,53 @@
     <div class="sidebar-line"></div>
 
     <ul class="sidebar-panel nav">
-      <li class="sidetitle"><img style="width: 100%; margin-bottom: 10px" src="assets/img/logo.png"></li>
-      <li><a [routerLinkActive]="['active']" routerLink="dashboard"><span class="icon"><i class="fa fa-home"></i></span>Start</a></li>
-      <li><a [routerLinkActive]="['active']" routerLink="devices"><span class="icon"><i class="fa fa-wifi"></i></span>Devices</a></li>
-      <li><a [routerLinkActive]="['active']" routerLink="data"><span class="icon"><i class="fa fa-database"></i></span>Data</a></li>
-      <li><a [routerLinkActive]="['active']" routerLink="ide"><span class="icon"><i class="fa fa-code"></i></span>IDE</a></li>
-      <li><a><span class="icon"><i class="fa fa-book"></i></span>Guides</a></li>
-      <li><a (click)="auth.logout()"><span class="icon"><i class="fa fa-sign-out"></i></span>Logout</a></li>
-    </ul>
+      <li class="sidetitle">
+        <img style="width: 100%; margin-bottom: 10px" src="assets/img/logo.png"></li>
+<li><a [routerLinkActive]="['active']" routerLink="dashboard"><span class="icon"><i class="fa fa-home"></i></span>Start</a></li>
+<li><a [routerLinkActive]="['active']" routerLink="devices"><span class="icon"><i class="fa fa-wifi"></i></span>Devices</a></li>
+<li><a [routerLinkActive]="['active']" routerLink="data"><span class="icon"><i class="fa fa-database"></i></span>Data</a></li>
+<li><a [routerLinkActive]="['active']" routerLink="ide"><span class="icon"><i class="fa fa-code"></i></span>IDE</a></li>
+<li><a><span class="icon"><i class="fa fa-book"></i></span>Guides</a></li>
+<li><a (click)="auth.logout()"><span class="icon"><i class="fa fa-sign-out"></i></span>Logout</a></li>
+</ul>
 
 
-  </div>
-  <!-- END SIDEBAR -->
+</div>
+<!-- END SIDEBAR -->
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+<!-- START CONTENT -->
+<div class="content row">
+
+
+  <!-- //////////////////////////////////////////////////////////////////////////// -->
+  <!-- START CONTAINER -->
+  <!--<div class="container-widget">-->
+
+  <!-- Start Top Angular -->
+  <router-outlet></router-outlet>
+
+  <!-- End Angular -->
+
+  <!--</div>-->
+  <!-- END CONTAINER -->
   <!-- //////////////////////////////////////////////////////////////////////////// -->
 
-  <!-- //////////////////////////////////////////////////////////////////////////// -->
-  <!-- START CONTENT -->
-  <div class="content">
+  <div style="clear: both"></div>
 
+</div>
 
-    <!-- //////////////////////////////////////////////////////////////////////////// -->
-    <!-- START CONTAINER -->
-    <!--<div class="container-widget">-->
-
-    <!-- Start Top Angular -->
-
-    <router-outlet></router-outlet>
-
-    <!-- End Angular -->
-
-    <!--</div>-->
-    <!-- END CONTAINER -->
-    <!-- //////////////////////////////////////////////////////////////////////////// -->
-
-  </div>
-
-  <!-- Start Footer -->
-  <div class="row footer">
-    <div class="col-md-12 text-left">
-      Copyright © 2017 <a href="#" target="_blank">Devota</a> All rights reserved.
-    </div>
-  </div>
-  <!-- End Footer -->
 
 </div>
 <!-- End page-container -->
+
+<!-- Start Footer -->
+<div class="col-md-12">
+  <div class="footer">
+    <div class="text-left">
+      Copyright © 2017 <a href="#" target="_blank">Devota</a> All rights reserved.
+    </div>
+  </div>
+</div>
+<!-- End Footer -->

@@ -1,4 +1,8 @@
-html, body, div.content {
+* {
+	margin: 0;
+}
+
+html, body {
   height: 100%;
 }
 
@@ -933,15 +937,12 @@ article.expandable.open p {
 }
 
 .footer {
+  height: 42px;
   padding: 10px;
-  margin: 0;
+  margin: -42px -15px 0 110px;
   font-size: 11px;
   color: rgba(255,255,255,0.6);
   background: rgba(0,0,0,0.25);
-  position: fixed;
-  bottom: 0;
-  left: 125px;
-  right: 0;
   border-top: 1px solid rgba(0,0,0,0.35);
 }
 
@@ -4500,4 +4501,18 @@ table td {
 
 .pointer {
   cursor: pointer;
+}
+
+#page-container {
+  min-height: 100%;
+}
+
+#bodySize {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -9999;
+  visibility: hidden;
 }

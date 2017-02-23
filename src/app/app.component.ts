@@ -10,7 +10,6 @@ import { AuthService } from './auth.service';
 })
 export class AppComponent {
   constructor(private auth: AuthService, private router: Router) { }
-  title = 'app works!';
   menuVisible = false;
 
   menuClicked() {
