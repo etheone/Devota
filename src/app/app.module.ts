@@ -19,6 +19,7 @@ import { routes } from './app.routes';
 import { DeviceOrderByPipe } from './order-by.pipe';
 import { FilterPipe } from './filter.pipe';
 import { UniquePipe } from './unique.pipe';
+import { GuidesComponent } from './guides/guides.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({}), http, options);
@@ -36,7 +37,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     LoginComponent,
     DeviceOrderByPipe,
     FilterPipe,
-    UniquePipe
+    UniquePipe,
+    GuidesComponent
   ],
   imports: [
     BrowserModule,
