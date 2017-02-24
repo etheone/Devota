@@ -97,7 +97,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn" data-dismiss="modal">Close</button>
+          <button type="button" (click)="cancelEditDevice()" class="btn" data-dismiss="modal">Close</button>
           <button [ngClass]="{disabled: !isValid()}" type="button" class="btn btn-primary" (click)="updateDevice(name, desc)" data-dismiss="modal">Save changes</button>
         </div>
       </form>

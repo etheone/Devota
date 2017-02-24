@@ -68,6 +68,15 @@ export class DevicesComponent implements OnInit {
 
   }
 
+  cancelEditDevice() {
+    this.name = "";
+    this.desc = "";
+    this.editingId = "";
+    this.modalName = "";
+    this.modalDescription = "";
+    this.fieldsOk = false;
+  }
+
   editDevice(id, name, desc) {
     this.editingId = id;
     this.modalName = name;
