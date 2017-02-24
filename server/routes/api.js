@@ -79,6 +79,27 @@ router.post('/quickstart/create', (req, res) => {
     }
 });
 
+router.get('/advanced/find', (req, res) => {
+    if (checkAuthorization(req)) {
+        models.Advanced.find().then(advanced => {
+            res.status(200).send(JSON.stringify(advanced));
+        });
+    } else {
+        res.sendStatus(401).send('Unauthorized');
+    }
+});
+
+router.post('/advanced/create', (req, res) => {
+    var advanced = req.body;
+    if (checkAuthorization(req)) {
+        models.Advanced.add(advanced.title, advanced.description).then(advanced => {
+            res.status(200).send(JSON.stringify(advanced));
+        })
+    } else {
+        res.sendStatus(401).send('Unauthorized');
+    }
+});
+
 router.post('/devices/create', (req, res) => {
     console.log("req.body in /devices/create");
     console.log(req.body);

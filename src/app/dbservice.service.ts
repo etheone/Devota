@@ -5,6 +5,7 @@ import { Device } from './device';
 import { Data } from './data';
 import { News } from './news';
 import { Quickstart } from './quickstart';
+import { Advanced } from './advanced';
 import { environment } from '../environments/environment';
 
 @Injectable()
@@ -21,6 +22,13 @@ export class DbService {
 
   getQuickstart(): Promise<Quickstart[]> {
     return this.authHttp.get(environment.url + "/api/quickstart/find")
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getAdvanced(): Promise<Advanced[]> {
+    return this.authHttp.get(environment.url + "/api/advanced/find")
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);

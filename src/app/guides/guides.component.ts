@@ -12,22 +12,36 @@ import { AuthService } from '../auth.service';
 })
 export class GuidesComponent implements OnInit {
   
-  faqOpen = [];
-  faqContent = [];
+  quickstartOpen = [];
+  quickstartContent = [];
+
+  advancedOpen = [];
+  advancedContent = [];
   
   constructor(private auth: AuthService, private dbService: DbService) { }
 
   ngOnInit() {
     this.getQuickstart();
+    this.getAdvanced();
   }
 
-  faqClicked(i) {
-    this.faqOpen[i] = !this.faqOpen[i];
+  quickstartClicked(i) {
+    this.quickstartOpen[i] = !this.quickstartOpen[i];
+  }
+
+  advancedClicked(i) {
+    this.advancedOpen[i] = !this.advancedOpen[i];
   }
 
   getQuickstart() {
     this.dbService.getQuickstart().then((quickstart) => {
-      this.faqContent = quickstart;
+      this.quickstartContent = quickstart;
+    });
+  }
+
+  getAdvanced() {
+    this.dbService.getAdvanced().then((advanced) => {
+      this.advancedContent = advanced;
     });
   }
 
