@@ -72,6 +72,8 @@ export class DevicesComponent implements OnInit {
     this.editingId = id;
     this.modalName = name;
     this.modalDescription = desc;
+    this.name = name;
+    this.desc = desc;
   }
 
   updateDeviceFields(id, name, description) {
