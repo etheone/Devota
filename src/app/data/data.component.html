@@ -26,7 +26,7 @@
         <ul class="dropdown-menu" role="menu">
           <li *ngFor="let data of dataArray | unique | orderBy: 'device_name':alwaysTrue" (click)="selectDevice(data.DeviceId)"><a>{{ data.device_name }}</a></li>
           <li class="divider"></li>
-          <li (click)="selectedDevice('')"><a>All</a></li>
+          <li (click)="selectDevice('')"><a>All</a></li>
         </ul>
       </div>
       <table class="table table-hover table-striped">
