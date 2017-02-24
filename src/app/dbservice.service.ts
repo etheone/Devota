@@ -12,7 +12,7 @@ import { environment } from '../environments/environment';
 export class DbService {
 
   constructor(public authHttp: AuthHttp) { }
-  
+
   getNews(): Promise<News[]> {
     return this.authHttp.get(environment.url + "/api/news/find")
       .toPromise()
@@ -83,9 +83,9 @@ export class DbService {
 
   getDeviceData(): Promise<Data[]> {
     return this.authHttp.get(environment.url + "/api/data/findbydevice")
-    .toPromise()
-    .then(this.extractData)
-    .catch(this.handleError);
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
   }
 
   getLatestData(userId): Promise<Data[]> {
@@ -93,9 +93,19 @@ export class DbService {
     return null;
   }
 
-  removeData(dataIds): Promise<any> {
+  removeData(dataId): Promise<any> {
     //To be implemented - Remove data entries
-    return null;
+    let data = JSON.stringify({ "dataId": dataId });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers, method: "post" });
+
+    return this.authHttp.post(environment.url + "/api/data/remove", data, options)
+      .toPromise()
+      .then(function(res) {
+        return res;
+      })
+      .catch(this.handleError);
+
   }
 
 

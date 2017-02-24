@@ -39,8 +39,20 @@ module.exports = function (sequelize, DataTypes) {
                         return -1;
                     })
                 },
-                remove: function (args) {
-                    switch (args.length()) {
+                remove: function (dataId) {
+                    if (dataId != "" && dataId != null) {
+                        return Data.destroy({
+                            where: { id: dataId }
+                        }).then(function (data) {
+                            return data;
+                        }).catch(function (error) {
+                            console.error("An error occured while removing data by dataId");
+                        });
+                    } else {
+                        return -1;
+                    }
+
+                    /*switch (args.length()) {
                         case 1:
                             //deviceId
                             if (args[0] == 'dataId') {
@@ -83,7 +95,7 @@ module.exports = function (sequelize, DataTypes) {
                             }).catch(function (error) {
                                 console.error("An error occured while deleting Data by deviceId, timeStart and timeEnd");
                             });
-                    }
+                    }*/
                 },
                 findByUser: function (models, userId) {
                     return sequelize.query("SELECT da.*, de.device_name FROM `Data` da JOIN `Device` de ON da.DeviceId = de.id WHERE de.UserId = 'auth0|57a1a50ce6b8fa2817471868';", {

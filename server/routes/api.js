@@ -162,7 +162,7 @@ router.get('/devices/remove', (req, res) => {
 
 router.post('/data/add', (req, res) => {
     //To be implemented - Add data
-    //console.log(req);
+   
     var body = req.body;
     var deviceId;
     var userId = getUserId(req);
@@ -171,9 +171,9 @@ router.post('/data/add', (req, res) => {
             console.log(devices);
             var count = devices.length;
             var deviceNr = Math.floor((Math.random() * (count + 1)));
-            console.log("Device # in /data/add: " + deviceNr);
+   
             deviceId = devices[deviceNr].id;
-            console.log("DeviceID in /data/add: " + deviceId);
+   
             models.Device.find(deviceId, null).then(device => {
                 var data = JSON.stringify(body.data);
                 if (device != null) {
@@ -229,7 +229,6 @@ router.post('/data/addreal', (req, res) => {
     //console.log("HEJ");
     //console.log(req.body);
     var body = req.body;
-    console.log(body);
 
     var deviceId = body.deviceId;
     delete body["deviceId"];
@@ -289,8 +288,22 @@ router.post('/data/addreal', (req, res) => {
   }*/
 });
 
-router.get('/data/remove', (req, res) => {
-    //To be implemented - Remove add
+router.post('/data/remove', (req, res) => {
+    var data = req.body;
+    if (checkAuthorization(req)) {
+        userId = getUserId(req);
+        models.Data.remove(data.dataId).then(data => {
+           /* console.log("********** data ***********");
+            console.log(data);*/
+            if(data != -1) {
+                res.sendStatus(200);
+            } else {
+                res.sendStatus(500);
+            }
+        });
+    } else {
+        res.sendStatus(401).send('Unauthorized');
+    }
 });
 
 router.get('/data/find', (req, res) => {
