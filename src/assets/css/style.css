@@ -2623,6 +2623,19 @@ dt,dd {
   background-color: #fff
 }
 
+.btn-dark, .modal .btn:not(.btn-primary) {
+  background-color: #777;
+  color: #fff;
+}
+
+.btn-dark:hover, .btn-dark:focus, .btn-dark:active,
+.modal .btn:not(.btn-primary):hover,
+.modal .btn:not(.btn-primary):focus,
+.modal .btn:not(.btn-primary):active {
+  background-color: #555;
+  color: #fff;
+}
+
 .btn-info {
   background-color: #51b7a3;
   color: #fff
@@ -2794,14 +2807,6 @@ dt,dd {
 .btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active {
     background-color: #c1463a;
     border-color: #b1392d;
-}
-
-.modal .btn:not(.btn-primary) {
-  background-color: #777;
-}
-
-.modal .btn:not(.btn-primary):hover {
-  color: #ccc;
 }
 
 .label {
@@ -4524,8 +4529,10 @@ table td {
   float: left;
 }
 
-.panel-body > .btn-group {
+.panel-body > .btn-group, .btn.right {
   float: right;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 .panel-body > .btn-group .btn-dark,
