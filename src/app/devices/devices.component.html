@@ -11,7 +11,7 @@
   <div class="panel">
     <div class="panel-body table-responsive">
       <p>Devices</p>
-      <button class="btn btn-dark right" data-toggle="modal" data-target="#addDevice"><i class="fa fa-plus-circle"></i>New Device</button>
+      <button class="btn btn-dark right" (click)="clearModalFields()" data-toggle="modal" data-target="#addDevice"><i class="fa fa-plus-circle"></i>New Device</button>
       <table class="table table-hover table-striped">
         <thead>
           <tr>
@@ -78,7 +78,7 @@
 </div>
 
 <!-- editDevice Modal -->
-<div class="modal fade" data-keyboard="false" id="editDevice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="editDevice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -97,7 +97,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" (click)="cancelEditDevice()" class="btn" data-dismiss="modal">Close</button>
+          <button type="button" (click)="clearModalFields()" class="btn" data-dismiss="modal">Close</button>
           <button [ngClass]="{disabled: !isValid()}" type="button" class="btn btn-primary" (click)="updateDevice(name, desc)" data-dismiss="modal">Save changes</button>
         </div>
       </form>

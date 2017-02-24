@@ -68,7 +68,7 @@ export class DevicesComponent implements OnInit {
 
   }
 
-  cancelEditDevice() {
+  clearModalFields() {
     this.name = "";
     this.desc = "";
     this.editingId = "";
