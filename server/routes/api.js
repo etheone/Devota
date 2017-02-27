@@ -5,9 +5,9 @@ var Promise = require('bluebird');
 var bodyParser = require('body-parser');
 
 var models = require('../models/models.js');
-
+var fileSystem = require('fs');
+var path = require('path');
 var secret = 'JBSJqOyxo3zDkgxlCbJoUb2FSZ5F9SrUz20J3uQ4CV5cQY6H6gmKCmPfnUN4-BiT';
-
 
 /* GET api listing. */
 router.get('/hej', (req, res) => {
@@ -326,6 +326,13 @@ router.get('/data/findbyuser', (req, res) => {
     } else {
         res.sendStatus(401).send('Unauthorized');
     }
+});
+
+router.get('/OTA/update', (req, res) => {
+    console.log(path.join(__dirname, '../firmware', 'esp01.bin'));
+    //res.sendFile(path.join(__dirname, '../public', 'index1.html'));
+    //res.sendFile(path.join(__dirname, '', 'index1.html'));
+    res.sendFile(path.join(__dirname, '../firmware', 'esp01.bin'));
 });
 
 function randomString(length) {
