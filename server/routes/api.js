@@ -331,6 +331,7 @@ router.get('/data/findbyuser', (req, res) => {
 
 router.get('/OTA/update.bin', (req, res) => {
     console.log(path.join(__dirname, '../firmware', 'esp01.bin'));
+    console.log(req);
     //res.sendFile(path.join(__dirname, '../public', 'index1.html'));
     //res.sendFile(path.join(__dirname, '', 'index1.html'));
     res.sendFile(path.join(__dirname, '../firmware', 'esp01.bin'));
