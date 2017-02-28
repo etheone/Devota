@@ -8,7 +8,7 @@ var models = require('../models/models.js');
 var fileSystem = require('fs');
 var path = require('path');
 var secret = 'JBSJqOyxo3zDkgxlCbJoUb2FSZ5F9SrUz20J3uQ4CV5cQY6H6gmKCmPfnUN4-BiT';
-
+express.static('../firmware');
 /* GET api listing. */
 router.get('/hej', (req, res) => {
     console.log("We are here");
