@@ -1,1 +1,28 @@
-<button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
+<!--<button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>-->
+
+<div id="navigation" class="{{scrolled}}">
+    <ul>
+        <li class="logo"><img class="light" src="assets/img/logo-wide-light.png"><img class="color" src="assets/img/logo-wide.png"></li>
+        <li (click)="auth.login()" *ngIf="!auth.authenticated()"><a>Login</a></li>
+        <li><a href="#home">Contribute</a></li>
+        <li><a href="#home">Features</a></li>
+        <li><a href="#home">Home</a></li>
+    </ul>
+</div>
+
+<div class="row" id="slogan">
+    <div class="col-md-12">
+        <img class="bg" src="../assets/img/login-bg.png">
+        <h1>Develop over the air</h1>
+        <h4 class="m0">Connect your own devices to the Internet and use our platform for both code developing and deployment.</h4>
+    </div>
+</div>
+
+
+<div class="row" style="margin-bottom: 350px">
+    <div class="col-md-12">
+        <h1>Use our amazing IDE</h1>
+        <h4 class="m0">Follow premade guides or build your own code from scratch.</h4>
+        <br>
+    </div>
+</div>
