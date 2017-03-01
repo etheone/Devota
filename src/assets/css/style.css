@@ -4554,3 +4554,16 @@ table td {
 .panel-body > .btn-group .dropdown-menu {
   min-width: 140px;
 }
+
+#login {
+  height: 100%;
+}
+
+.logged-out .footer {
+  margin-left: -15px;
+}
+
+.logged-out .content {
+  margin-left: 0px;
+  padding-bottom: 50px;
+}
