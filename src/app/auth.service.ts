@@ -13,6 +13,10 @@ declare var Auth0Lock: any;
 export class AuthService {
   // Configure Auth0
   options = {
+    theme: {
+      logo: 'assets/img/logo.png',
+      primaryColor: '#252126'
+    },
     additionalSignUpFields: [
       {
         name: "full_name",
