@@ -9,6 +9,7 @@ var fileSystem = require('fs');
 var path = require('path');
 var secret = 'JBSJqOyxo3zDkgxlCbJoUb2FSZ5F9SrUz20J3uQ4CV5cQY6H6gmKCmPfnUN4-BiT';
 
+router.use(express.static(path.join(__dirname, '../firmware')));
 /* GET api listing. */
 router.get('/hej', (req, res) => {
     console.log("We are here");
@@ -328,8 +329,9 @@ router.get('/data/findbyuser', (req, res) => {
     }
 });
 
-router.get('/OTA/update', (req, res) => {
+router.get('/OTA/update.bin', (req, res) => {
     console.log(path.join(__dirname, '../firmware', 'esp01.bin'));
+    console.log(req);
     //res.sendFile(path.join(__dirname, '../public', 'index1.html'));
     //res.sendFile(path.join(__dirname, '', 'index1.html'));
     res.sendFile(path.join(__dirname, '../firmware', 'esp01.bin'));
