@@ -4577,5 +4577,5 @@ table td {
 }
 
 .auth0-lock.auth0-lock .auth0-lock-header-logo {
-    height: 88px;
+    height: 88px !important;
 }
