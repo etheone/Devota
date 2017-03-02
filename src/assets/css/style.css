@@ -4571,3 +4571,11 @@ table td {
 .content-container {
   padding-top: 15px;
 }
+
+.auth0-lock-name {
+  display: none;
+}
+
+.auth0-lock.auth0-lock .auth0-lock-header-logo {
+    height: 88px;
+}
