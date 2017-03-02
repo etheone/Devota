@@ -14,7 +14,7 @@ export class AuthService {
   // Configure Auth0
   options = {
     theme: {
-      logo: 'assets/img/logo.png',
+      logo: 'assets/img/logo-dark.png',
       primaryColor: '#252126'
     },
     additionalSignUpFields: [
