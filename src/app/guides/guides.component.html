@@ -13,26 +13,28 @@
 
 </div>
 
-<div class="row">
-  <div class="col-md-6">
-    <div class="panel">
-      <h2 class="m0">Getting started</h2>
-      <br>
-      <article *ngFor="let i of quickstartContent; let i = index" class="expandable" [class.open]="quickstartOpen[i]">
-        <h4 (click)="quickstartClicked(i)">{{quickstartContent[i].title}}</h4>
-        <p>{{quickstartContent[i].description}}</p>
-      </article>
+<div class="col-md-12 content-container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel">
+        <h2 class="m0">Getting started</h2>
+        <br>
+        <article *ngFor="let i of quickstartContent; let i = index" class="expandable" [class.open]="quickstartOpen[i]">
+          <h4 (click)="quickstartClicked(i)">{{quickstartContent[i].title}}</h4>
+          <p>{{quickstartContent[i].description}}</p>
+        </article>
+      </div>
     </div>
-  </div>
 
-  <div class="col-md-6">
-    <div class="panel">
-      <h2 class="m0">Advanced</h2>
-      <br>
-      <article *ngFor="let i of advancedContent; let i = index" class="expandable" [class.open]="advancedOpen[i]">
-        <h4 (click)="advancedClicked(i)">{{advancedContent[i].title}}</h4>
-        <p innerHTML = "{{advancedContent[i].description}}"></p>
-      </article>
+    <div class="col-md-6">
+      <div class="panel">
+        <h2 class="m0">Advanced</h2>
+        <br>
+        <article *ngFor="let i of advancedContent; let i = index" class="expandable" [class.open]="advancedOpen[i]">
+          <h4 (click)="advancedClicked(i)">{{advancedContent[i].title}}</h4>
+          <p innerHTML="{{advancedContent[i].description}}"></p>
+        </article>
+      </div>
     </div>
   </div>
 </div>

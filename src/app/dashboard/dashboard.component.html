@@ -13,28 +13,30 @@
 
 </div>
 
-<div class="row">
-  <div class="col-md-6">
-    <div class="panel">
-      <h2 class="m0">News</h2>
-      <br>
-      <article *ngFor="let i of newsContent; let i = index">
-        <h6>{{newsContent[i].date}}</h6>
-        <h4>{{newsContent[i].title}}</h4>
-        <p>{{newsContent[i].description}}</p>
-        <a href="#{{newsContent[i].id}}">Läs mer</a>
-      </article>
+<div class="col-md-12 content-container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel">
+        <h2 class="m0">News</h2>
+        <br>
+        <article *ngFor="let i of newsContent; let i = index">
+          <h6>{{newsContent[i].date}}</h6>
+          <h4>{{newsContent[i].title}}</h4>
+          <p>{{newsContent[i].description}}</p>
+          <a href="#{{newsContent[i].id}}">Läs mer</a>
+        </article>
+      </div>
     </div>
-  </div>
 
-  <div class="col-md-6">
-    <div class="panel">
-      <h2 class="m0">Getting started</h2>
-      <br>
-      <article *ngFor="let i of faqContent; let i = index" class="expandable" [class.open]="faqOpen[i]">
-        <h4 (click)="faqClicked(i)">{{faqContent[i].title}}</h4>
-        <p>{{faqContent[i].description}}</p>
-      </article>
+    <div class="col-md-6">
+      <div class="panel">
+        <h2 class="m0">Getting started</h2>
+        <br>
+        <article *ngFor="let i of faqContent; let i = index" class="expandable" [class.open]="faqOpen[i]">
+          <h4 (click)="faqClicked(i)">{{faqContent[i].title}}</h4>
+          <p>{{faqContent[i].description}}</p>
+        </article>
+      </div>
     </div>
   </div>
 </div>
