@@ -5,11 +5,6 @@ var path      = require("path");
 var Sequelize = require("sequelize");
 var env       = process.env.NODE_ENV || "development";
 var config    = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
-/*if (process.env.DATABASE_URL) {
-  var sequelize = new Sequelize(process.env.DATABASE_URL,config);
-} else {*/
-//var sequelize = new Sequelize(config.database, config.username, config.password, config);
-//var sequelize = new Sequelize('mysql://joemini:Kroywen1@e-nilsson.se:9191/joemini');
 
 var sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,
@@ -19,13 +14,11 @@ var sequelize = new Sequelize(config.database, config.username, config.password,
 //}
 var db        = {};
 
-fs
-  .readdirSync(__dirname)
+fs.readdirSync(__dirname)
   .filter(function(file) {
     return (file.indexOf(".") !== 0) && (file !== "models.js");
   })
   .forEach(function(file) {
-    console.log(file + " filename ********");
     var model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
   });

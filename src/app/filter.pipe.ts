@@ -8,8 +8,6 @@ export class FilterPipe implements PipeTransform {
       transform(items: any[], arg: string): any {
         // filter items array, items which match and return true will be kept, false will be filtered out
         var itemsToReturn = [];
-        console.log("in filter pipe");
-        console.log(arg);
         if(arg == "") {
           return items;
         } else {

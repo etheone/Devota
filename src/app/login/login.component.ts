@@ -32,19 +32,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (this.auth.authenticated()) {
-      console.log("User is authenticated");
       this.router.navigate(['./dashboard']);
     }
   }
 
 
   ngDoCheck() {
-    /*console.log("I AM HERE");
-    console.log(this.auth.authenticated())*/
-    /*if(this.auth.authenticated()) {
-      console.log("USER IS AUTHENTICATED");
-      this.router.navigate(['./dashboard']);
-    }*/
+
   }
 
 }

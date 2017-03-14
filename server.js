@@ -14,8 +14,6 @@ var models = require('./server/models/models.js');
 
 app.use(cors());
 
-//var pFn = require('./server/db/db');
-
 // Parsers for POST data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

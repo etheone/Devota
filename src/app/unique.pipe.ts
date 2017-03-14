@@ -18,11 +18,4 @@ export class UniquePipe implements PipeTransform {
         return itemsToReturn;
         
     }
-
-  /*  filterNames(name, deviceNames) {
-      if(deviceNames.indexOf(item)) {
-        
-      }
-    }*/
-
 }

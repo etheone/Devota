@@ -56,7 +56,6 @@ export class DbService {
   }
 
   updateDevice(deviceId, name, description): Promise<Device> {
-    console.log("ID: " + deviceId + "      Name: " + name + "     Description: " + description);
     let device = JSON.stringify({ "deviceId": deviceId, "deviceName": name, "description": description });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers, method: "post" });
@@ -70,7 +69,6 @@ export class DbService {
   }
 
   removeDevices(deviceIds): Promise<any> {
-    //To be implemeented - remove devices
     return null;
   }
 
@@ -89,12 +87,12 @@ export class DbService {
   }
 
   getLatestData(userId): Promise<Data[]> {
-    //To be implemented - Get latest data from all devices belonging to userId
+    
     return null;
   }
 
   removeData(dataId): Promise<any> {
-    //To be implemented - Remove data entries
+    
     let data = JSON.stringify({ "dataId": dataId });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers, method: "post" });
@@ -110,7 +108,7 @@ export class DbService {
 
 
   /*
-  * Moch function to add data until devices are connected
+  * Mock function to add data until devices are connected
   */
   addData(): Promise<any> {
     let temp = Math.floor((Math.random() * 50) + 1);
@@ -130,7 +128,6 @@ export class DbService {
 
   private extractData(res: Response) {
     let reset = res.json();
-    console.log(reset);
     return reset;
   }
 

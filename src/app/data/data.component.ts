@@ -47,20 +47,14 @@ export class DataComponent implements OnInit, OnDestroy {
 
   cancelRemove() {
     this.selectedDataId = "";
-    console.log("selectedDataId after cancel: ");
-    console.log(this.selectedDataId);
   }
 
   selectData(id) {
     this.selectedDataId = id;
-    console.log("selectedDataId: ");
-    console.log(this.selectedDataId);
   }
 
   selectDevice(deviceId) {
     this.selectedDevice = deviceId;
-    console.log("in select device");
-    console.log(this.selectedDevice);
   }
 
   sortData(arg) {
@@ -73,8 +67,6 @@ export class DataComponent implements OnInit, OnDestroy {
 
   getData() {
     this.dbService.getAllData().then((data) => {
-      console.log("Data: ");
-      console.log(data);
       if (data.length > 0) {
         this.dataArray = data;
       } else {

@@ -78,33 +78,13 @@ export class AuthService {
       .toPromise()
       .then(function (res: Response) {
         if (res.status == 200) {
-          console.log(res.text());
           that.router.navigate(['./dashboard']);
         } else {
-          console.log("DID NOT GET A 200 RESPONSE FROM BACKEND DURING AUTHENTICATE");
         }
       })
       .catch(this.handleError);
   }
 
-
-  private goToDashboard(res: Response) {
-    if (res.status == 200) {
-
-      //this.router.navigate(['./dashboard']);
-    } else {
-      console.log("DID NOT GET A 200 RESPONSE FROM BACKEND DURING AUTHENTICATE");
-    }
-  }
-
-  /*  private extractData(res: Response) {
-    let reset = res.json();
-    
-    
-    
-    return reset;
-
-  }*/
   private handleError(error: Response | any) {
 
     let errMsg: string;

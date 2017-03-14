@@ -15,8 +15,6 @@ export const routes: Routes = [
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full'
-    //component: DashboardComponent,
-    //canActivate: [AuthGuard]
 
   },
   { 
@@ -53,32 +51,3 @@ export const routes: Routes = [
     component: PageNotFoundComponent
   }
 ];
-
-/*const ROUTES = [
-  {
-    path: '',
-    component: LoginComponent
-
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent
-  },
-  {
-    path: 'devices',
-    component: DevicesComponent
-  },
-  {
-    path: 'data',
-    component: DataComponent
-  },
-  {
-    path: 'ide',
-    component: IdeComponent
-  },
-  {
-    path: '**',
-    component: PageNotFoundComponent
-  }
-
-]*/

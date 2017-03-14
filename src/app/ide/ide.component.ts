@@ -27,7 +27,6 @@ export class IdeComponent {
       
     });
 
-    console.log(this.editor);
     this.editor._editor.text = this.text;
     this.editor.getEditor().commands.addCommand({
       name: "showOtherCompletions",
@@ -48,23 +47,3 @@ export class IdeComponent {
 
 }
 
-/*
-export class IdeComponent implements OnInit {
-
-  text: string;
-  options: any = { maxLines: 1000, printMargin: false };
-
-  constructor() {
-    this.text = 'test';
-    this.options = { printMargin: false };
-
-  }
-
-  onChange(data) {
-    console.log(data);
-  }
-
-  ngOnInit() {
-
-  }
-}*/

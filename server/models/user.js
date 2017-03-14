@@ -13,36 +13,6 @@ module.exports = function (sequelize, DataTypes) {
                 associate: function (models) {
                     User.hasMany(models.Device)
                 },
-                add: function (userId) {
-                    /*return User.sync({}).then(function () {
-                        //Table created or synched
-                       return User.findOne({
-                            where: { id: userId }
-                        }).then(function (user) {
-                            var userToReturn = {};
-                            if (user == null) {
-                                return User.create({
-                                    id: userId
-                                }).then(function (user) {
-                                    userToReturn["user"] = user;
-                                    userToReturn["created"] = true;
-                                    userToReturn["message"] = "Success";
-                                    return userToReturn;
-                                }).catch(function (error) {
-                                    console.err("Error creating user, userId: " + userId);
-                                });
-                            } else {
-                                userToReturn["user"] = user;
-                                userToReturn["created"] = false;
-                                userToReturn["message"] = "User with ID " + userId + " already exists!"
-                                return userToReturn;
-                            }
-                        }).catch(function (error) {
-                            console.err("An error occured while creating User");
-                        });
-
-                    });*/
-                },
                 findOrAdd: function(userId) {
                     return User.findOrCreate({
                         where: { id: userId },
@@ -61,6 +31,7 @@ module.exports = function (sequelize, DataTypes) {
                         return user;
                     }).catch(function (error) {
                         console.err("An error occured while finding user");
+                        return -1;
                     });
                 },
                 delete: function (userId) {
@@ -70,6 +41,7 @@ module.exports = function (sequelize, DataTypes) {
                         return user;
                     }).catch(function(error) {
                         console.err("An error occured while deleting user");
+                        return -1;
                     });
                 }
 
@@ -77,27 +49,4 @@ module.exports = function (sequelize, DataTypes) {
 
         });
     return User;
-};
-
-
-
-/*var User = sequelize.define('user', {
-    id: {
-        type: Sequelize.UUID,
-        allowNull: false,
-        primaryKey: true
-    },
-    freezeTableName: true // Model tableName will be the same as the model name
-});*/
-
-function addUser(userId) {
-    User.sync({}).then(function () {
-        //Table created or synched
-        return User.create({
-            id: userId
-        }).catch(function (error) {
-            console.log("Error creating user, userId: " + userId);
-        });
-    });
-
 };

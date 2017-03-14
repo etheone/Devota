@@ -81,6 +81,7 @@ module.exports = function (sequelize, DataTypes) {
                             return device;
                         }).catch(function (error) {
                             console.error("An error occured while removing device by deviceId");
+                            return -1;
                         });
                     } else {
                         //Delete all devices belonging to userId
@@ -90,6 +91,7 @@ module.exports = function (sequelize, DataTypes) {
                             return device;
                         }).catch(function (error) {
                             console.error("An error occured while removing device by deviceId");
+                            return -1;
                         });
                     }
                 },
@@ -104,6 +106,7 @@ module.exports = function (sequelize, DataTypes) {
                             return device;
                         }).catch(function (error) {
                             console.error("An error occured while updating device name by deviceId");
+                            return -1;
                         });
                 }
 
@@ -113,52 +116,4 @@ module.exports = function (sequelize, DataTypes) {
         });
 
     return Device;
-};
-
-/*
-var Device = sequelize.define('device', {
-    id: {
-        type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV1,
-        primaryKey: true
-    },
-    device_name: {
-        type: Sequelize.TEXT,
-        field: 'deviceName',
-        allowNull: false,
-    },
-    type: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    },
-    added: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.fn('NOW'),
-        field: 'added'
-    },
-    user_id: {
-        type: Sequelize.UUID,
-        allowNull: true,
-        references: {
-            model: User,
-            key: 'id'
-        }
-
-    },
-
-    freezeTableName: true // Model tableName will be the same as the model name
-}); */
-
-function addDevice(deviceId, name, type, userId, added, uniqueId) {
-    Device.sync({}).then(function () {
-        return Device.create({
-            id: deviceId,
-            device_identifier: uniqueId,
-            device_name: name,
-            type: type,
-            added: added,
-            user_id: userId
-        });
-    });
 };
