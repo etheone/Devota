@@ -43,6 +43,8 @@ export class DevicesComponent implements OnInit {
         this.devices.push(device);
       }
 
+      this.getDevices();
+
     });
 
     this.name = "";

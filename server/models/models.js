@@ -6,11 +6,16 @@ var Sequelize = require("sequelize");
 var env       = process.env.NODE_ENV || "development";
 var config    = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
 
-var sequelize = new Sequelize(config.database, config.username, config.password, {
+var sequelize = new Sequelize("joemini", "root", "root", {
+  host: "localhost",
+  port: 8889,
+  logging: console.log
+});
+/*var sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,
   port: config.port,
   logging: console.log
-});
+});*/
 //}
 var db        = {};
 

@@ -34,15 +34,17 @@ export class DataComponent implements OnInit, OnDestroy {
 
   removeSelected() {
 
-    if (this.dataSubscription)  {
-      this.dataSubscription.unsubscribe();
+    if (this.selectedDataId != undefined) {
+      console.log(this.selectedDataId);
+      this.dbService.removeData(this.selectedDataId).then((deleted) => {
+        if (this.dataSubscription) {
+          this.dataSubscription.unsubscribe();
+        }
+        this.getData();
+      });
     }
 
-    this.dbService.removeData(this.selectedDataId).then((deleted) => {
-      this.getData();
-    });
 
-    
   }
 
   cancelRemove() {
@@ -67,11 +69,17 @@ export class DataComponent implements OnInit, OnDestroy {
 
   getData() {
     this.dbService.getAllData().then((data) => {
+      console.log(data);
       if (data.length > 0) {
         this.dataArray = data;
+      } else if (this.dataArray.length == 1 && data.length == 0) {
+        console.log("DIDNT GET ANY DATA AND WE ALREADY HAVE A FAKERLINE");
       } else {
         var emptyData = new Data("", "", "You do not yet have any devices, add one to see it here", "", "");
         this.dataArray.push(data);
+      }
+      if(this.dataSubscription) {
+        this.dataSubscription.unsubscribe();
       }
       this.subscribeToData();
     });
@@ -86,7 +94,7 @@ export class DataComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.dataSubscription)  {
+    if (this.dataSubscription) {
       this.dataSubscription.unsubscribe();
     }
   }

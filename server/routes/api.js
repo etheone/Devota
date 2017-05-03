@@ -272,13 +272,19 @@ router.get('/data/findbyuser', (req, res) => {
         userId = getUserId(req);
         models.Data.findByUser(null, userId).then(data => {
             if (data != -1) {
+                console.log("Here");
+                console.log(data);
                 res.status(200).send(JSON.stringify(data));
             } else {
+                console.log("Heree");
                 res.sendStatus(422);
+                
             }
         });
     } else {
+        console.log("Hereee");
         res.sendStatus(401).send('Unauthorized');
+    
     }
 });
 
