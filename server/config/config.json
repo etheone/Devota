@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": "abf31e43E",
+        "password": "hejsan123",
         "database": "joemini",
         "host": "localhost",
         "port": 3306,
@@ -9,11 +9,11 @@
         "logging": false
     },
     "production": {
-        "username": "joemini",
-        "password": "Kroywen1",
+        "username": "root",
+        "password": "hejsan123",
         "database": "joemini",
-        "host": "e-nilsson.se",
-        "port": 9191,
+        "host": "localhost",
+        "port": 3306,
         "dialect": "mysql",
         "logging": false
     }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Response, Request, RequestOptions, Headers } from '@angular/http';
-import { tokenNotExpired, AuthHttp } from 'angular2-jwt';
+import { Response, Request, RequestOptions, Headers, Http} from '@angular/http';
+import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 import { Device } from './device';
 import { Data } from './data';
 import { News } from './news';
@@ -11,24 +11,24 @@ import { environment } from '../environments/environment';
 @Injectable()
 export class DbService {
 
-  constructor(public authHttp: AuthHttp) { }
+  constructor(public authHttp: JwtHelperService, private http: Http) { }
 
   getNews(): Promise<News[]> {
-    return this.authHttp.get(environment.url + "/api/news/find")
+    return this.http.get(environment.url + "/api/news/find")
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
   }
 
   getQuickstart(): Promise<Quickstart[]> {
-    return this.authHttp.get(environment.url + "/api/quickstart/find")
+    return this.http.get(environment.url + "/api/quickstart/find")
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
   }
 
   getAdvanced(): Promise<Advanced[]> {
-    return this.authHttp.get(environment.url + "/api/advanced/find")
+    return this.http.get(environment.url + "/api/advanced/find")
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
@@ -39,7 +39,7 @@ export class DbService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers, method: "post" });
 
-    return this.authHttp.post(environment.url + "/api/devices/create", device, options)
+    return this.http.post(environment.url + "/api/devices/create", device, options)
 
       .toPromise()
       .then(this.extractData)
@@ -49,7 +49,7 @@ export class DbService {
   }
 
   getDevices(): Promise<Device[]> {
-    return this.authHttp.get(environment.url + "/api/devices/find")
+    return this.http.get(environment.url + "/api/devices/find")
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
@@ -60,7 +60,7 @@ export class DbService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers, method: "post" });
 
-    return this.authHttp.post(environment.url + "/api/devices/update", device, options)
+    return this.http.post(environment.url + "/api/devices/update", device, options)
 
       .toPromise()
       .then(this.extractData)
@@ -73,14 +73,14 @@ export class DbService {
   }
 
   getAllData(): Promise<Data[]> {
-    return this.authHttp.get(environment.url + "/api/data/findbyuser")
+    return this.http.get(environment.url + "/api/data/findbyuser")
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
   }
 
   getDeviceData(): Promise<Data[]> {
-    return this.authHttp.get(environment.url + "/api/data/findbydevice")
+    return this.http.get(environment.url + "/api/data/findbydevice")
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);
@@ -97,7 +97,7 @@ export class DbService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers, method: "post" });
 
-    return this.authHttp.post(environment.url + "/api/data/remove", data, options)
+    return this.http.post(environment.url + "/api/data/remove", data, options)
       .toPromise()
       .then(function(res) {
         return res;
@@ -116,7 +116,7 @@ export class DbService {
     let body = JSON.stringify({ "deviceId": "d956ffdb-f67a-409f-99ee-54af7e6e4c7b", "data": { "temp": temp, "humidity": humidity } });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers, method: "post" });
-    return this.authHttp.post(environment.url + "/api/data/add", body, options)
+    return this.http.post(environment.url + "/api/data/add", body, options)
       .toPromise()
       .then(function (res) {
         return res.status;

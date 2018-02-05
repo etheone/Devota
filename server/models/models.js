@@ -5,11 +5,13 @@ var path      = require("path");
 var Sequelize = require("sequelize");
 var env       = process.env.NODE_ENV || "development";
 var config    = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
+var dialect = "mysql";
 
-var sequelize = new Sequelize("joemini", "root", "root", {
+var sequelize = new Sequelize("test", "root", "hejsan123", {
   host: "localhost",
-  port: 8889,
-  logging: console.log
+  port: 3306,
+  logging: console.log,
+  dialect: "mysql"
 });
 /*var sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,

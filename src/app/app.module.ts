@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, Http, RequestOptions } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
+import { JwtModule} from '@auth0/angular-jwt';  
 import { AceEditorComponent } from 'ng2-ace-editor';
 
 import { AppComponent } from './app.component';
@@ -21,9 +21,6 @@ import { FilterPipe } from './filter.pipe';
 import { UniquePipe } from './unique.pipe';
 import { GuidesComponent } from './guides/guides.component';
 
-export function authHttpServiceFactory(http: Http, options: RequestOptions) {
-  return new AuthHttp(new AuthConfig({}), http, options);
-}
 
 @NgModule({
   declarations: [
@@ -44,15 +41,18 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        },
+        whitelistedDomains: ['http://localhost:4200']
+      }
+    })
   ],
   providers: [
-    AuthGuard,
-    {
-      provide: AuthHttp,
-      useFactory: authHttpServiceFactory,
-      deps: [Http, RequestOptions]
-    }
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

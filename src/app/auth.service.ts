@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Response, Request } from '@angular/http';
-import { tokenNotExpired, AuthHttp } from 'angular2-jwt';
+import { JwtModule, JwtHelperService } from '@auth0/angular-jwt';
 import 'rxjs/add/operator/toPromise';
 import { environment } from '../environments/environment';
 
@@ -28,7 +28,7 @@ export class AuthService {
   private lock = new Auth0Lock('VHnXH58XGAL7XOfqUs8cjY8cMMt5gv2L', 'enilsson.eu.auth0.com', this.options);
   private profile: Object;
 
-  constructor(private router: Router, public authHttp: AuthHttp) {
+  constructor(private router: Router, private jwtHelperService: JwtHelperService) {
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult) => {
       localStorage.setItem('id_token', authResult.idToken);
@@ -41,7 +41,6 @@ export class AuthService {
         this.profile = profile;
 
       });
-      this.loginToBackend();
     });
   }
 
@@ -50,10 +49,16 @@ export class AuthService {
     this.lock.show();
   }
 
-  public authenticated() {
-    // Check if there's an unexpired JWT
-    // This searches for an item in localStorage with key == 'id_token'
-    return tokenNotExpired();
+loggedIn() {
+    const token: string = this.jwtHelperService.tokenGetter()
+
+    if (!token) {
+      return false
+    }
+
+    const tokenExpired: boolean = this.jwtHelperService.isTokenExpired(token)
+
+    return !tokenExpired
   }
 
   public logout() {
@@ -69,21 +74,7 @@ export class AuthService {
 
   }
 
-  private loginToBackend(): Promise<any> {
 
-    var that = this;
-    return this.authHttp.get(environment.url + "/api/authenticate")
-
-
-      .toPromise()
-      .then(function (res: Response) {
-        if (res.status == 200) {
-          that.router.navigate(['./dashboard']);
-        } else {
-        }
-      })
-      .catch(this.handleError);
-  }
 
   private handleError(error: Response | any) {
 
