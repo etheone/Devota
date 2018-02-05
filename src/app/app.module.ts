@@ -14,7 +14,7 @@ import { IdeComponent } from './ide/ide.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 
-import { AuthGuard } from './common/auth.guard';
+//import { AuthGuard } from './common/auth.guard';
 import { routes } from './app.routes';
 import { DeviceOrderByPipe } from './order-by.pipe';
 import { FilterPipe } from './filter.pipe';
@@ -52,7 +52,7 @@ import { GuidesComponent } from './guides/guides.component';
     })
   ],
   providers: [
-    AuthGuard
+    //AuthGuard
   ],
   bootstrap: [AppComponent]
 })

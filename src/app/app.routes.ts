@@ -7,7 +7,7 @@ import { IdeComponent } from './ide/ide.component';
 import { GuidesComponent } from './guides/guides.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './common/auth.guard';
+//import { AuthGuard } from './common/auth.guard';
 
 // Define which component should be loaded based on the current URL
 export const routes: Routes = [
@@ -23,28 +23,28 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard]
+    component: DashboardComponent//,
+    //canActivate: [AuthGuard]
   },
   {
     path: 'devices',
     component: DevicesComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'data',
     component: DataComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: 'ide',
     component: IdeComponent,
-    canActivate: [AuthGuard]
+   //canActivate: [AuthGuard]
   },
   {
     path: 'guides',
     component: GuidesComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   },
   {
     path: '**',
